@@ -11,3 +11,6 @@ suv.o: suv.h
 
 vehicle.o: vehicle.h
 
+git:
+	rm *.o
+	rm main
