@@ -20,14 +20,44 @@
 
 using namespace std;
 
+
+
 Vehicle::Vehicle(){
 
 }
 
 Vehicle::Vehicle(string make, string model, string color, int numWheels, int customerNum) {
-
+	this.make = make;
+	this.model = model;
+	this.color = color;
+	this.numWheels = numWheels;
+	this.customerNum = customerNum;
 }
 
 Vehicle::~Vehicle(){
 
 }
+
+
+string Vehicle::getColor() {
+	return color
+}
+
+string Vehicle::getMake() {
+	return make
+}
+
+string Vehicle::getModel() {
+	return model
+}
+
+int Vehicle::getCustomerNum() {
+	return customerNum;
+}
+
+int Vehicle::getNumwheels() {
+	return numWheels;
+}
+
+
+

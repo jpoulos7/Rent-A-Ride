@@ -39,6 +39,12 @@ public:
     Vehicle(string make, string model, string color, int numWheels, int customerNum);
     //Destructor
     ~Vehicle();
+	int getNumwheels();
+	int getCustomerNum();
+	string getColor();
+	string getModel();
+	string getMake();
+
 
 };
 
