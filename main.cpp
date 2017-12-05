@@ -13,4 +13,5 @@ int main() {
     Truck myTruck;
     SUV mySUV;
     Motorcycle myMotorcycle;
+    Customer myCustomer;
 }
