@@ -1,23 +1,39 @@
-//Read in csv with make, model, numwheels
-//do this for car, truck, suv, and motorcycle
-//Randomly pick a color and set customer num -1
-//generate a range of this type of vehicle (maybe 50-125?)
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
 
 using namespace std;
 
 int main(int argc, char* argv[]) {
 
-    string infile = argv[1];
-    string outfile = argv[2];
-
-    ifstream inFile;
-    inFile.open(infile.c_str());
-    string line;
-
-    while(getline(inFile, line)){
-        cout << line << endl;
+    if (argc < 6){
+        cout << "Usage: " << argv[0] << " <inputfile> <outputfile> <numberofwheels> <maxnum> <minnum>" << endl;
     }
+
+    srand(time(NULL));
+    //Make model year color wheels id
+    string colors[] = {"Black", "Blue", "Red", "Yellow", "White", "Silver", "Gray", "Green", "Brown"};
+    string outfile = argv[2];
+    FILE *output_file = fopen(outfile.c_str(), "w");
+
+    ifstream file(argv[1]);
+    string linebuffer;
+
+    int wheels = atoi(argv[3]);
+    int maxnum = atoi(argv[4]);
+    int minnum = atoi(argv[5]);
+    while(getline(file, linebuffer, '\r')) {
+
+        int numCarsRand = rand() % maxnum + minnum;
+
+        for (int i = 0; i < numCarsRand; i++){
+            int colorRand = 0 + rand() % 9;
+            int yearRand = 1999 + rand() % 19;
+            fprintf(output_file, "%s,%d,%s,%d,%d\n", linebuffer.c_str(), yearRand, colors[colorRand].c_str(), wheels, -1);
+        }
+    }
+    fclose(output_file);
 }

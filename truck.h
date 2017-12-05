@@ -30,7 +30,7 @@ public:
     //Default constructor
     Truck();
     //Constructor for new vehicle
-    Truck(string make, string model, string color, int numWheels, int customerNum);
+    Truck(string make, string model, int year, string color, int numWheels, int customerNum);
     //Destructor
     ~Truck();
 

@@ -5,14 +5,17 @@
 #include "suv.h"
 #include "motorcycle.h"
 #include "customer.h"
+#include "rentalManager.h"
 
 using namespace std;
 
+RentalManager::RentalManager(){
 
+}
 
 
 int main() {
-    Car myCar("toyota", "prius", "blue", 4, -1);
+    Car myCar("toyota", "prius", "blue", , -1);
     cout << myCar.getColor() << endl;
 
 }

@@ -55,6 +55,14 @@ string Vehicle::getModel() {
     return model;
 }
 
+void Vehicle::setYear(int year) {
+    this->year = year;
+}
+
+int Vehicle::getYear() {
+    return year;
+}
+
 void Vehicle::setColor(string color) {
     this->color = color;
 }
