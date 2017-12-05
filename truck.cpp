@@ -21,11 +21,15 @@
 using namespace std;
 
 Truck::Truck(){
-    cout << "NEW Truck" << endl;
+    
 }
 
-Truck::Truck(string make, string model, string color, int numWheels, int customerNum) {
-
+Truck::Truck(string make, string model, string color, int numWheels, int customerID) {
+    this->setMake(make);
+    this->setModel(model);
+    this->setColor(color);
+    this->setNumWheels(numWheels);
+    this->setCustomerID(customerID);
 }
 
 Truck::~Truck(){

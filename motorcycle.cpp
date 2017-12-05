@@ -21,11 +21,15 @@
 using namespace std;
 
 Motorcycle::Motorcycle(){
-    cout << "NEW Motorcycle" << endl;
+    
 }
 
-Motorcycle::Motorcycle(string make, string model, string color, int numWheels, int customerNum) {
-
+Motorcycle::Motorcycle(string make, string model, string color, int numWheels, int customerID) {
+    this->setMake(make);
+    this->setModel(model);
+    this->setColor(color);
+    this->setNumWheels(numWheels);
+    this->setCustomerID(customerID);
 }
 
 Motorcycle::~Motorcycle(){

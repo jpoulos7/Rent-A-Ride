@@ -21,11 +21,15 @@
 using namespace std;
 
 SUV::SUV(){
-    cout << "NEW SUV" << endl;
+    
 }
 
-SUV::SUV(string make, string model, string color, int numWheels, int customerNum) {
-
+SUV::SUV(string make, string model, string color, int numWheels, int customerID) {
+    this->setMake(make);
+    this->setModel(model);
+    this->setColor(color);
+    this->setNumWheels(numWheels);
+    this->setCustomerID(customerID);
 }
 
 SUV::~SUV(){

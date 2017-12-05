@@ -27,23 +27,34 @@ class Vehicle {
 private:
     string make;
     string model;
+    int year;
     string color;
     int numWheels;
-    int customerNum;
+    int customerID;
 
 public:
 
     //Default constructor
     Vehicle();
     //Constructor for new vehicle
-    Vehicle(string make, string model, string color, int numWheels, int customerNum);
+    Vehicle(string make, string model, int year, string color, int numWheels, int customerID);
     //Destructor
     ~Vehicle();
-	int getNumwheels();
-	int getCustomerNum();
-	string getColor();
-	string getModel();
-	string getMake();
+    void setMake(string make);
+    string getMake();
+    void setModel(string model);
+    string getModel();
+    void setYear(int year);
+    int getYear();
+    void setColor(string color);
+    string getColor();
+    void setNumWheels(int numWheels);
+	int getNumWheels();
+    void setCustomerID(int customerID);
+	int getCustomerID();
+
+
+
 
 
 };

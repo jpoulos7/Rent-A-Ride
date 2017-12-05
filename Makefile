@@ -18,3 +18,4 @@ customer.o: customer.h
 git:
 	rm *.o
 	rm main
+	rm rentalManager

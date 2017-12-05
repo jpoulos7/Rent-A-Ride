@@ -9,10 +9,10 @@
 using namespace std;
 
 
+
+
 int main() {
-    Car myCar;
-    Truck myTruck;
-    SUV mySUV;
-    Motorcycle myMotorcycle;
-    Customer myCustomer;
+    Car myCar("toyota", "prius", "blue", 4, -1);
+    cout << myCar.getColor() << endl;
+
 }

@@ -26,38 +26,59 @@ Vehicle::Vehicle(){
 
 }
 
-Vehicle::Vehicle(string make, string model, string color, int numWheels, int customerNum) {
-	this.make = make;
-	this.model = model;
-	this.color = color;
-	this.numWheels = numWheels;
-	this.customerNum = customerNum;
+Vehicle::Vehicle(string make, string model, int year, string color, int numWheels, int customerID) {
+	this->make = make;
+	this->model = model;
+    this->year = year;
+	this->color = color;
+	this->numWheels = numWheels;
+	this->customerID = customerID;
 }
 
 Vehicle::~Vehicle(){
 
 }
 
-
-string Vehicle::getColor() {
-	return color
+void Vehicle::setMake(string make) {
+    this->make = make;
 }
 
 string Vehicle::getMake() {
-	return make
+    return make;
+}
+
+void Vehicle::setModel(string model) {
+    this->model = model;
 }
 
 string Vehicle::getModel() {
-	return model
+    return model;
 }
 
-int Vehicle::getCustomerNum() {
-	return customerNum;
+void Vehicle::setColor(string color) {
+    this->color = color;
 }
 
-int Vehicle::getNumwheels() {
-	return numWheels;
+string Vehicle::getColor() {
+    return color;
 }
+
+void Vehicle::setNumWheels(int numWheels) {
+    this->numWheels = numWheels;
+}
+
+int Vehicle::getNumWheels() {
+    return numWheels;
+}
+
+void Vehicle::setCustomerID(int customerID) {
+    this->customerID = customerID;
+}
+
+int Vehicle::getCustomerID() {
+	return customerID;
+}
+
 
 
 

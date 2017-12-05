@@ -23,7 +23,9 @@ Customer::Customer(){
 }
 
 Customer::Customer(string firstName, string lastName, int customerID){
-
+    this->firstName = firstName;
+    this->lastName = lastName;
+    this->customerID = customerID;
 }
 
 void Customer::setFirstName(string firstName){
