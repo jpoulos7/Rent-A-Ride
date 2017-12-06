@@ -16,19 +16,20 @@
 #define RENTALMANAGER_H
 #include <iostream>
 #include <string>
+#include <vector>
+#include "vehicle.h"
 
-using namespace std;
 
 class RentalManager {
 private:
 
-
+    //std::unordered_set<Car> available;
+    std::vector<Vehicle> available;
 
 public:
 
     //Constructors
     RentalManager();
-    
     
 };
 

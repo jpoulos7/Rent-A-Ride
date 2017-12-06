@@ -17,7 +17,7 @@ int main(int argc, char* argv[]) {
     //Make model year color wheels id
     string colors[] = {"Black", "Blue", "Red", "Yellow", "White", "Silver", "Gray", "Green", "Brown"};
     string outfile = argv[2];
-    FILE *output_file = fopen(outfile.c_str(), "w");
+    FILE *output_file = fopen(outfile.c_str(), "a+");
 
     ifstream file(argv[1]);
     string linebuffer;

@@ -6,16 +6,16 @@
 #include "motorcycle.h"
 #include "customer.h"
 #include "rentalManager.h"
+#include <unordered_set>
 
 using namespace std;
 
 RentalManager::RentalManager(){
-
+    
 }
 
 
 int main() {
-    Car myCar("toyota", "prius", "blue", , -1);
-    cout << myCar.getColor() << endl;
+    RentalManager manager;
 
 }
