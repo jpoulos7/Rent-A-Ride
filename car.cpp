@@ -20,6 +20,7 @@
 
 using namespace std;
 
+//Constructor
 Car::Car(){
 
 }
@@ -37,7 +38,7 @@ string Car::getColor() {
     return color;
 }
 
-string Car::getCustomerID() {
+int Car::getCustomerID() {
     return customerID;
 }
 
@@ -54,7 +55,27 @@ int Car::getYear() {
 }
 
 void Car::setYear(int y) {
-    year = y;
+    year = y; //
+}
+
+void Car::setColor(string c) {
+	color = c;
+}
+
+void Car::setMake(string ma) {
+	make = ma;
+}
+
+void Car::setModel(string mo) {
+	model = mo;
+}
+
+void Car::setNumWheels(int nw) {
+	numWheels = nw;
+}
+
+void Car::setCustomerID(int cid) {
+	customerID = cid;
 }
 
 Car::~Car(){

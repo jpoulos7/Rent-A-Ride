@@ -15,7 +15,3 @@ RentalManager::RentalManager(){
 }
 
 
-int main() {
-    RentalManager manager;
-
-}
