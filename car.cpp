@@ -33,6 +33,30 @@ Car::Car(string make, string model, int year, string color, int numWheels, int c
     this->setCustomerID(customerID);
 }
 
+string Car::getColor() {
+    return color;
+}
+
+string Car::getCustomerID() {
+    return customerID;
+}
+
+string Car::getMake() {
+    return make;
+}
+
+int Car::getNumWheels() {
+    return numWheels;
+}
+
+int Car::getYear() {
+    return year;
+}
+
+void Car::setYear(int y) {
+    year = y;
+}
+
 Car::~Car(){
     
 }
