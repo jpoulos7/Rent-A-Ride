@@ -18,6 +18,7 @@
 #include <string>
 #include <vector>
 #include "vehicle.h"
+#include "customer.h"
 
 
 class RentalManager {
@@ -30,10 +31,10 @@ public:
 
     //Constructors
     RentalManager();
+    RentalManager(string filename);
     void importVehicles(string filename);
-    void rentVehicle(Vehicle v);
+    void rentVehicle(Vehicle v, Customer c);
     
-
 };
 
 #endif

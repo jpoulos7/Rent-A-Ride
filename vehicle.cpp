@@ -26,13 +26,14 @@ Vehicle::Vehicle(){
 
 }
 
-Vehicle::Vehicle(string make, string model, int year, string color, int numWheels, int customerID) {
+Vehicle::Vehicle(string make, string model, int year, string color, int numWheels, int customerID, int status) {
 	this->make = make;
 	this->model = model;
     this->year = year;
 	this->color = color;
 	this->numWheels = numWheels;
 	this->customerID = customerID;
+    this->status = status;
 }
 
 Vehicle::~Vehicle(){
@@ -87,6 +88,13 @@ int Vehicle::getCustomerID() {
 	return customerID;
 }
 
+void Vehicle::setStatus(int status) {
+    this->status = status;
+}
+
+int Vehicle::getStatus() {
+    return status;
+}
 
 
 

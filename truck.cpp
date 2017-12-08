@@ -24,13 +24,14 @@ Truck::Truck(){
     
 }
 
-Truck::Truck(string make, string model, int year, string color, int numWheels, int customerID) {
+Truck::Truck(string make, string model, int year, string color, int numWheels, int customerID, int status) {
     this->setMake(make);
     this->setModel(model);
     this->setYear(year);
     this->setColor(color);
     this->setNumWheels(numWheels);
     this->setCustomerID(customerID);
+    this->setStatus(status);
 }
 
 Truck::~Truck(){

@@ -30,31 +30,10 @@ public:
     //Default constructor
     Car();
     //Constructor for new vehicle
-    Car(string make, string model, int year, string color, int numWheels, int customerID);
+    Car(string make, string model, int year, string color, int numWheels, int customerID, int status);
     //Destructor
     ~Car();
-    string getMake();
-    string getModel();
-    string getColor();
-    int getYear();
-    int getNumWheels();
-    int getCustomerID();
-    void setMake(string ma);
-    void setModel(string mo);
-    void setYear(int y);
-    void setColor(string c);
-    void setNumWheels(int nw);
-    void setCustomerID(int cid);
 
-
-private:
-    string make;
-    string model;
-    int year;
-    string color;
-    int numWheels;
-    int customerID;
-    
 };
 
 #endif

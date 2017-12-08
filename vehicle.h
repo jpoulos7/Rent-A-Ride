@@ -24,20 +24,21 @@ using namespace std;
 
 class Vehicle {
 
-private:
+protected:
     string make;
     string model;
     int year;
     string color;
     int numWheels;
     int customerID;
+    int status;
 
 public:
 
     //Default constructor
     Vehicle();
     //Constructor for new vehicle
-    Vehicle(string make, string model, int year, string color, int numWheels, int customerID);
+    Vehicle(string make, string model, int year, string color, int numWheels, int customerID, int status);
     //Destructor
     ~Vehicle();
     void setMake(string make);
@@ -52,10 +53,8 @@ public:
 	int getNumWheels();
     void setCustomerID(int customerID);
 	int getCustomerID();
-
-
-
-
+    void setStatus(int status);
+    int getStatus();
 
 };
 
