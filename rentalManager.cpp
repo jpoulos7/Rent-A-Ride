@@ -95,8 +95,7 @@ string RentalManager::getRepair() {
 
 void RentalManager::rentVehicle(Vehicle v, Customer c) {
     v.setCustomerID(c.getCustomerID());
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 }
 
 void RentalManager::returnVehicle(Vehicle v) {
@@ -116,6 +115,7 @@ void RentalManager::returnVehicleProblems(Vehicle v) {
         }
     }
 }
+
 
 void RentalManager::repairVehicle(Vehicle v) {
     for (vector<Vehicle>::iterator it = allVehicles.begin() ; it != allVehicles.end(); ++it) {
@@ -129,13 +129,10 @@ void RentalManager::detailVehicle(Vehicle v) {
     for (vector<Vehicle>::iterator it = allVehicles.begin() ; it != allVehicles.end(); ++it) {
         if(it->toString() == v.toString()){
             v.setStatus(-1);
-=======
+        }
+    }
 }
 
-=======
-}
-
->>>>>>> 2a1f6883bb555d71405f19a9ac49c0a7444fc1ea
 void RentalManager::returnVehicle(Vehicle v) {
     for (vector<Vehicle>::iterator it = allVehicles.begin() ; it != allVehicles.end(); ++it) {
         if(it->toString() == v.toString()){
@@ -150,13 +147,11 @@ void RentalManager::returnVehicleProblems(Vehicle v) {
         if(it->toString() == v.toString()){
             v.setCustomerID(-1);
             v.setStatus(2);
-<<<<<<< HEAD
->>>>>>> 2a1f6883bb555d71405f19a9ac49c0a7444fc1ea
-=======
->>>>>>> 2a1f6883bb555d71405f19a9ac49c0a7444fc1ea
+
         }
     }
 }
+
 
 int main(int argc, char* argv[]) {
 
@@ -175,28 +170,18 @@ int main(int argc, char* argv[]) {
     Car car2("Toyota", "prius", 2017, "Blue", 4, -1, 0, "C");
     Car car3("Toyota", "4runner", 2018, "Blue", 4, -1, 1, "C");
     Car car4("Toyota", "lol", 2019, "Blue", 4, -1, 2, "C");
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 2a1f6883bb555d71405f19a9ac49c0a7444fc1ea
-
-    manager.addVehicle(car1);
-    manager.addVehicle(car2);
-    manager.addVehicle(car3);
-    manager.addVehicle(car4);
-<<<<<<< HEAD
-
-=======
 
     manager.addVehicle(car1);
     manager.addVehicle(car2);
     manager.addVehicle(car3);
     manager.addVehicle(car4);
 
->>>>>>> 2a1f6883bb555d71405f19a9ac49c0a7444fc1ea
-=======
 
->>>>>>> 2a1f6883bb555d71405f19a9ac49c0a7444fc1ea
+    manager.addVehicle(car1);
+    manager.addVehicle(car2);
+    manager.addVehicle(car3);
+    manager.addVehicle(car4);
+
     cout << manager.getAllVehicles() << endl;
     cout << manager.getAvailable() << endl;
     cout << manager.getRented() << endl;

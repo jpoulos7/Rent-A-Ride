@@ -54,16 +54,8 @@ public:
     void returnVehicle(Vehicle v);
     void returnVehicleProblems(Vehicle v);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     void repairVehicle(Vehicle v);
     void detailVehicle(Vehicle v);
-
-=======
->>>>>>> 2a1f6883bb555d71405f19a9ac49c0a7444fc1ea
-=======
->>>>>>> 2a1f6883bb555d71405f19a9ac49c0a7444fc1ea
-
 
 };
 
