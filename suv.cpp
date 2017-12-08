@@ -24,7 +24,7 @@ SUV::SUV(){
     
 }
 
-SUV::SUV(string make, string model, int year, string color, int numWheels, int customerID, int status) {
+SUV::SUV(string make, string model, int year, string color, int numWheels, int customerID, int status, string type) {
     this->setMake(make);
     this->setModel(model);
     this->setYear(year);
@@ -32,6 +32,7 @@ SUV::SUV(string make, string model, int year, string color, int numWheels, int c
     this->setNumWheels(numWheels);
     this->setCustomerID(customerID);
     this->setStatus(status);
+    this->setType(type);
 }
 
 SUV::~SUV(){

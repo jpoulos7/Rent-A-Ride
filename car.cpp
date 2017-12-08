@@ -25,7 +25,7 @@ Car::Car(){
 
 }
 
-Car::Car(string make, string model, int year, string color, int numWheels, int customerID, int status) {
+Car::Car(string make, string model, int year, string color, int numWheels, int customerID, int status, string type) {
     this->setMake(make);
     this->setModel(model);
     this->setYear(year);
@@ -33,6 +33,7 @@ Car::Car(string make, string model, int year, string color, int numWheels, int c
     this->setNumWheels(numWheels);
     this->setCustomerID(customerID);
     this->setStatus(status);
+    this->setType(type);
 }
 
 Car::~Car(){

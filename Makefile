@@ -19,5 +19,3 @@ rentalManager.o: rentalManager.h
 
 git:
 	rm *.o
-	rm main
-	rm rentalManager

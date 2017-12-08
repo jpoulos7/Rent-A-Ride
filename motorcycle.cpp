@@ -24,7 +24,7 @@ Motorcycle::Motorcycle(){
     
 }
 
-Motorcycle::Motorcycle(string make, string model, int year, string color, int numWheels, int customerID, int status) {
+Motorcycle::Motorcycle(string make, string model, int year, string color, int numWheels, int customerID, int status, string type) {
     this->setMake(make);
     this->setModel(model);
     this->setYear(year);
@@ -32,6 +32,7 @@ Motorcycle::Motorcycle(string make, string model, int year, string color, int nu
     this->setNumWheels(numWheels);
     this->setCustomerID(customerID);
     this->setStatus(status);
+    this->setType(type);
 }
 
 Motorcycle::~Motorcycle(){
