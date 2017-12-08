@@ -133,25 +133,6 @@ void RentalManager::detailVehicle(Vehicle v) {
     }
 }
 
-void RentalManager::returnVehicle(Vehicle v) {
-    for (vector<Vehicle>::iterator it = allVehicles.begin() ; it != allVehicles.end(); ++it) {
-        if(it->toString() == v.toString()){
-            v.setCustomerID(-1);
-            v.setStatus(1);
-        }
-    }
-}
-
-void RentalManager::returnVehicleProblems(Vehicle v) {
-    for (vector<Vehicle>::iterator it = allVehicles.begin() ; it != allVehicles.end(); ++it) {
-        if(it->toString() == v.toString()){
-            v.setCustomerID(-1);
-            v.setStatus(2);
-
-        }
-    }
-}
-
 
 int main(int argc, char* argv[]) {
 
