@@ -33,6 +33,27 @@ public:
     Car(string make, string model, int year, string color, int numWheels, int customerID);
     //Destructor
     ~Car();
+    string getMake();
+    string getModel();
+    string getColor();
+    int getYear();
+    int getNumWheels();
+    int getCustomerID();
+    void setMake(string ma);
+    void setModel(string mo);
+    void setYear(int y);
+    void setColor(string c);
+    void setNumWheels(int nw);
+    void setCustomerID(int cid);
+
+
+private:
+    string make;
+    string model;
+    int year;
+    string color;
+    int numWheels;
+    int customerID;
     
 };
 
