@@ -30,7 +30,10 @@ public:
 
     //Constructors
     RentalManager();
+    void importVehicles(string filename);
+    void rentVehicle(Vehicle v);
     
+
 };
 
 #endif
