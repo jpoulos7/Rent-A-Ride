@@ -26,7 +26,7 @@ Vehicle::Vehicle(){
 
 }
 
-Vehicle::Vehicle(string make, string model, int year, string color, int numWheels, int customerID, int status) {
+Vehicle::Vehicle(string make, string model, int year, string color, int numWheels, int customerID, int status, string type) {
 	this->make = make;
 	this->model = model;
     this->year = year;
@@ -34,6 +34,7 @@ Vehicle::Vehicle(string make, string model, int year, string color, int numWheel
 	this->numWheels = numWheels;
 	this->customerID = customerID;
     this->status = status;
+    this->type = type;
 }
 
 Vehicle::~Vehicle(){
@@ -96,5 +97,14 @@ int Vehicle::getStatus() {
     return status;
 }
 
+void Vehicle::setType(string type) {
+    this->type = type;
+}
 
+string Vehicle::getType() {
+    return type;
+}
 
+string Vehicle::toString(){
+    return make + " " + model + " " + to_string(year) + " " + color + " " + type;
+}

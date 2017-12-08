@@ -30,7 +30,7 @@ public:
     //Default constructor
     SUV();
     //Constructor for new vehicle
-    SUV(string make, string model, int year, string color, int numWheels, int customerNum, int status);
+    SUV(string make, string model, int year, string color, int numWheels, int customerNum, int status, string type);
     //Destructor
     ~SUV();
 

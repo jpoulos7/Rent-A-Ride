@@ -32,7 +32,7 @@ int main(int argc, char* argv[]) {
         for (int i = 0; i < numCarsRand; i++){
             int colorRand = 0 + rand() % 9;
             int yearRand = 1999 + rand() % 19;
-            fprintf(output_file, "%s,%d,%s,%d,%d\n", linebuffer.c_str(), yearRand, colors[colorRand].c_str(), wheels, -1);
+            fprintf(output_file, "%s,%d,%s,%d,%d\n", linebuffer.c_str(), yearRand, colors[colorRand].c_str(), wheels, -1, -1);
         }
     }
     fclose(output_file);

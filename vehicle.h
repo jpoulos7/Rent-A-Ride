@@ -32,13 +32,14 @@ protected:
     int numWheels;
     int customerID;
     int status;
+    string type;
 
 public:
 
     //Default constructor
     Vehicle();
     //Constructor for new vehicle
-    Vehicle(string make, string model, int year, string color, int numWheels, int customerID, int status);
+    Vehicle(string make, string model, int year, string color, int numWheels, int customerID, int status, string type);
     //Destructor
     ~Vehicle();
     void setMake(string make);
@@ -55,6 +56,9 @@ public:
 	int getCustomerID();
     void setStatus(int status);
     int getStatus();
+    void setType(string type);
+    string getType();
+    string toString();
 
 };
 
