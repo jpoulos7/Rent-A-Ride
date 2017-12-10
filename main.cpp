@@ -10,6 +10,7 @@
 #include <FL/fl_draw.H>
 #include <FL/Fl_Widget.H>
 #include <FL/Fl_Choice.H>
+#include <FL/fl_ask.H>
 #include <stdlib.h>
 #include <iostream>
 #include <string>
@@ -29,19 +30,19 @@ Fl_Double_Window win(1500, 1200, "Rent-A-Ride");
 /**Creating a listview for the customers*/
 Fl_Hold_Browser customerView(40,80,200,200,"Customers");
 /**Creating a listview for the available vehicles*/
-Fl_Hold_Browser avail(290,80,225,200,"Available Vehicles");
+Fl_Hold_Browser avail(280,80,225,200,"Available Vehicles");
 /**Creating a listview for the cars out for rent*/
-Fl_Hold_Browser rent(540,80,270,200,"Rent");
+Fl_Hold_Browser rent(545,80,270,200,"Rent");
 /**Creating a listview for the cars out for detail*/
-Fl_Hold_Browser detail(850,80,240,200,"Out for detail");
+Fl_Hold_Browser detail(855,80,240,200,"Out for detail");
 /**Creating a listview for the cars out for repair*/
-Fl_Hold_Browser repair(1100,80,240,200,"Out for repair");
+Fl_Hold_Browser repair(1135,80,240,200,"Out for repair");
 
 Fl_Button rentVehicle(40,300,200,30,"Rent vehicle");
-Fl_Button returnVehicle(290,300,200,30,"Return vehicle");
-Fl_Button returnVehicleProblem(550,300,200,30,"Return Vehicle (With problem)");
-Fl_Button repairVehicle(1040,300,200,30,"Repair vehicle");
-Fl_Button detailVehicle(780,300,200,30,"Detail vehicle");
+Fl_Button returnVehicle(280,300,225,30,"Return vehicle");
+Fl_Button returnVehicleProblem(545,300,270,30,"Return Vehicle (With problem)");
+Fl_Button repairVehicle(1135,300,240,30,"Repair vehicle");
+Fl_Button detailVehicle(855,300,240,30,"Detail vehicle");
 
 Fl_Input personName(100,400,300,30,"First Name");
 Fl_Input personLastName(100,450,300,30,"Last Name");
@@ -56,13 +57,13 @@ Fl_Button addVehicle(600,650,200,30,"Add Vehicle");
 //Search
 Fl_Input searchPerson(920,400,200,30,"Search by Name: ");
 Fl_Button searchPersonButton(1140,400,100,30,"Search By Name");
-Fl_Hold_Browser results(920,500,325,100);
+Fl_Hold_Browser results(920,450,325,100,"Results");
 
-RentalManager manager;
+//RentalManager manager;
 /**
 * This function will handle updating all listview contents
-* @param
-* @return
+* @param none
+* @return none
 **/
 void updateView() {
 
@@ -128,6 +129,13 @@ void rentCallback(Fl_Widget* widget, void* v){
     }
     std::string custSelect = (std::string) customerView.text(customerFound);
     std::string vehSelect = (std::string) avail.text(vehicleFound);
+    if(customerFound == -1){
+      fl_alert("Select the customer who will rent the vehicle");
+    }
+    else if(vehicleFound == -1){
+      fl_alert("Select the vehicle to be rented");
+    }
+    else{
 
     std::string token;
     std::string cust[3];
@@ -160,6 +168,7 @@ void rentCallback(Fl_Widget* widget, void* v){
     }
 
     updateView();
+  }
 }
 
 void customerCallback(Fl_Widget* widget, void* v){
@@ -183,7 +192,11 @@ void returnCallback(Fl_Widget* widget, void* v){
         }
     }
     std::string vehSelect = (std::string) rent.text(vehicleFound);
+    if(vehicleFound == -1){
+      fl_alert("Select the vehicle to return");
 
+    }
+    else{
     std::string token;
     std::string veh[6];
     int count = 0;
@@ -204,6 +217,7 @@ void returnCallback(Fl_Widget* widget, void* v){
         manager.returnVehicle(tempVeh);
     }
     updateView();
+  }
 }
 
 void returnProblemCallback(Fl_Widget* widget, void* v){
@@ -215,6 +229,10 @@ void returnProblemCallback(Fl_Widget* widget, void* v){
             i = vSize+1;
         }
     }
+    if(vehicleFound == -1){
+      fl_alert("Select the vehicle to return with problems");
+    }
+    else{
     std::string vehSelect = (std::string) rent.text(vehicleFound);
 
     std::string token;
@@ -237,6 +255,7 @@ void returnProblemCallback(Fl_Widget* widget, void* v){
         manager.returnVehicleProblems(tempVeh);
     }
     updateView();
+  }
 }
 
 void detailCallback(Fl_Widget* widget, void* v){
@@ -249,7 +268,10 @@ void detailCallback(Fl_Widget* widget, void* v){
         }
     }
     std::string vehSelect = (std::string) detail.text(vehicleFound);
+    if(vehicleFound == -1){
+      fl_alert("Select the vehicle to detail");
 
+    }else{
     std::string token;
     std::string veh[5];
     int count = 0;
@@ -270,6 +292,7 @@ void detailCallback(Fl_Widget* widget, void* v){
         manager.detailVehicle(tempVeh);
     }
     updateView();
+  }
 }
 
 void repairCallback(Fl_Widget* widget, void* v){
@@ -281,6 +304,10 @@ void repairCallback(Fl_Widget* widget, void* v){
             i = vSize+1;
         }
     }
+    if(vehicleFound = -1){
+      fl_alert("No vehicle selecte to repair");
+    }
+    else{
     std::string vehSelect = (std::string) repair.text(vehicleFound);
 
     std::string token;
@@ -303,6 +330,7 @@ void repairCallback(Fl_Widget* widget, void* v){
         manager.repairVehicle(tempVeh);
     }
     updateView();
+  }
 }
 
 void addVehCallback(Fl_Widget* widget, void* v){
@@ -312,7 +340,7 @@ void addVehCallback(Fl_Widget* widget, void* v){
     string year = (string) vehYear.value();
     int color = vehColor.value();
     int type = vehType.value();
-
+    //
     if (type == 0){
         Car temp(make, model, atoi(year.c_str()), colors[color], 4, -1, -1, "C");
         manager.addVehicle(temp);
@@ -329,8 +357,8 @@ void addVehCallback(Fl_Widget* widget, void* v){
 
 void searchNameCallback(Fl_Widget* widget, void* v){
     string token = (string) searchPerson.value();
-    manager.searchName(token);
-    updateView();
+     manager.searchName(token);
+     updateView();
 }
 
 int main(int argc, char **argv) {
@@ -359,7 +387,7 @@ int main(int argc, char **argv) {
     vehColor.add("Brown");
 
 
-    //manager.importVehicles("dataset/all_out.csv");
+    manager.importVehicles("dataset/all_out.csv");
     manager.importVehicles("dataset/rand_out.csv");
     manager.importCustomers("dataset/customers.csv");
 
