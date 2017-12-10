@@ -71,6 +71,10 @@ void RentalManager::importCustomers(string filename) {
 }
 
 void RentalManager::addCustomer(Customer c) {
+    if (c.getCustomerID() == -1){
+        c.setCustomerID(idCount);
+        idCount++;
+    }
     customers.push_back(c);
 }
 
