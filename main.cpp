@@ -59,10 +59,11 @@ Fl_Button searchPersonButton(1140,400,100,30,"Search By Name");
 Fl_Hold_Browser results(920,500,325,100);
 
 RentalManager manager;
+
 /**
 * This function will handle updating all listview contents
-* @param
-* @return
+* @param none
+* @return none
 **/
 void updateView() {
 
