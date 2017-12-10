@@ -24,13 +24,17 @@
 #include "rentalManager.h"
 #include "customer.h"
 
-Fl_Double_Window win(1500, 1200, "Simple Table");
-// Fl_Output customerTitle(0,40,100,100,0);
-// customerTitle.value("Customers");
+/**Creating the main window*/
+Fl_Double_Window win(1500, 1200, "Rent-A-Ride");
+/**Creating a listview for the customers*/
 Fl_Hold_Browser customerView(40,80,200,200,"Customers");
+/**Creating a listview for the available vehicles*/
 Fl_Hold_Browser avail(290,80,225,200,"Available Vehicles");
+/**Creating a listview for the cars out for rent*/
 Fl_Hold_Browser rent(540,80,270,200,"Rent");
+/**Creating a listview for the cars out for detail*/
 Fl_Hold_Browser detail(850,80,240,200,"Out for detail");
+/**Creating a listview for the cars out for repair*/
 Fl_Hold_Browser repair(1100,80,240,200,"Out for repair");
 
 Fl_Button rentVehicle(40,300,200,30,"Rent vehicle");
@@ -52,12 +56,14 @@ Fl_Button addVehicle(600,650,200,30,"Add Vehicle");
 //Search
 Fl_Input searchPerson(920,400,200,30,"Search by Name: ");
 Fl_Button searchPersonButton(1140,400,100,30,"Search By Name");
-//Fl_Input searchByVehicle(920,450,200,30,"Search By Vehicle");
-//Fl_Button searchVehicleButton(1140,450,100,30,"Search By Vehicle");
 Fl_Hold_Browser results(920,500,325,100);
 
 RentalManager manager;
-
+/**
+* This function will handle updating all listview contents
+* @param
+* @return
+**/
 void updateView() {
 
     customerView.clear();
