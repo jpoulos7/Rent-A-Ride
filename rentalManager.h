@@ -30,13 +30,15 @@ private:
     //std::vector<Vehicle> detailShop;
     //std::vector<Vehicle> repairShop;
     std::vector<Customer> customers;
+    int idCount;
 
 public:
 
     //Constructors
     RentalManager();
-    RentalManager(string filename);
+    RentalManager(string vehicles, string customers);
     void importVehicles(string filename);
+    void importCustomers(string filename);
 
     void addCustomer(Customer c);
     string getAllCustomers();
@@ -50,12 +52,14 @@ public:
     string getDetail();
     string getRepair();
 
-    void rentVehicle(Vehicle v, Customer c);
+    void rentVehicle(Vehicle *v, Customer *c);
     void returnVehicle(Vehicle v);
     void returnVehicleProblems(Vehicle v);
 
     void repairVehicle(Vehicle v);
     void detailVehicle(Vehicle v);
+
+
 
 };
 

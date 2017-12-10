@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <sstream>
 #include "car.h"
 #include "truck.h"
 #include "suv.h"
@@ -7,26 +8,66 @@
 #include "customer.h"
 #include "rentalManager.h"
 #include "customer.h"
-#include <unordered_set>
 
 using namespace std;
 
 RentalManager::RentalManager(){
-
+    idCount = 0;
 }
 
-RentalManager::RentalManager(string filename){
-
+RentalManager::RentalManager(string vehicles, string customers){
+    importVehicles(vehicles);
+    importCustomers(customers);
 }
 
 void RentalManager::importVehicles(string filename) {
     ifstream file(filename);
-    string linebuffer;
-
-    while(getline(file, linebuffer, '\r')) {
-
+    string linebuffer, token;
+    string veh[8];
+    int count = 0;
+    while(getline(file, linebuffer, '\n')) {
+        istringstream ss(linebuffer);
+        count = 0;
+        while(getline(ss, token, ',')) {
+            veh[count] = token;
+            count++;
+        }
+        if(veh[7] == "C") {
+            Car car1(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],atoi(veh[4].c_str()),atoi(veh[5].c_str()),atoi(veh[6].c_str()),veh[7]);
+            addVehicle(car1);
+        }
+        if(veh[7] == "T") {
+            Truck truck1(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],atoi(veh[4].c_str()),atoi(veh[5].c_str()),atoi(veh[6].c_str()),veh[7]);
+            addVehicle(truck1);
+        }
+        if(veh[7] == "S") {
+            SUV suv1(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],atoi(veh[4].c_str()),atoi(veh[5].c_str()),atoi(veh[6].c_str()),veh[7]);
+            addVehicle(suv1);
+        }
+        if(veh[7] == "M") {
+            Motorcycle motorcycle1(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],atoi(veh[4].c_str()),atoi(veh[5].c_str()),atoi(veh[6].c_str()),veh[7]);
+            addVehicle(motorcycle1);
+        }
     }
+}
 
+void RentalManager::importCustomers(string filename) {
+    ifstream file(filename);
+    string linebuffer, token;
+    string cust[2];
+    int count = 0;
+    idCount = 0;
+    while(getline(file, linebuffer, '\n')) {
+        istringstream ss(linebuffer);
+        count = 0;
+        while(getline(ss, token, ',')) {
+            cust[count] = token;
+            count++;
+        }
+        Customer cust1(cust[0],cust[1],idCount);
+        idCount++;
+        addCustomer(cust1);
+    }
 }
 
 void RentalManager::addCustomer(Customer c) {
@@ -48,7 +89,7 @@ void RentalManager::addVehicle(Vehicle v) {
 string RentalManager::getAllVehicles() {
     string list = "";
     for (vector<Vehicle>::iterator it = allVehicles.begin() ; it != allVehicles.end(); ++it) {
-        list += it->toString() + "\n";
+        list += it->toString() + " STATUS: " + to_string(it->getStatus()) + "\n";
     }
     return list;
 }
@@ -66,7 +107,9 @@ string RentalManager::getAvailable() {
 string RentalManager::getRented() {
     string list = "";
     for (vector<Vehicle>::iterator it = allVehicles.begin() ; it != allVehicles.end(); ++it) {
+        //cout << "STATUS: " << it->getStatus() << endl;
         if(it->getStatus() == 0){
+            //cout << "Found rented! " << it->toString() << endl;
             list += it->toString() + "\n";
         }
     }
@@ -93,8 +136,13 @@ string RentalManager::getRepair() {
     return list;
 }
 
-void RentalManager::rentVehicle(Vehicle v, Customer c) {
-    v.setCustomerID(c.getCustomerID());
+void RentalManager::rentVehicle(Vehicle *v, Customer *c) {
+    for (vector<Vehicle>::iterator it = allVehicles.begin() ; it != allVehicles.end(); ++it) {
+        if(it->toString() == v->toString()){
+            it->setStatus(0);
+            it->setCustomerID(c->getCustomerID());
+        }
+    }
 
 }
 
@@ -137,37 +185,53 @@ void RentalManager::detailVehicle(Vehicle v) {
 int main(int argc, char* argv[]) {
 
     RentalManager manager;
-    Customer cust("John", "Poulos", 0);
-    Customer cust1("John", "Poulos", 1);
-    Customer cust2("John", "Poulos", 2);
+    //Customer cust("John", "Poulos", 150);
+    //    Customer cust1("John", "Poulos", 1);
+    //    Customer cust2("John", "Poulos", 2);
+    //
+    //    manager.addCustomer(cust);
+    //    manager.addCustomer(cust1);
+    //    manager.addCustomer(cust2);
+    //
+    //    cout << manager.getAllCustomers();
+    //
+    //    Car car1("Toyota", "Camry", 2016, "Blue", 4, -1, -1, "C");
+    //Car car2("Toyota", "prius", 2017, "Blue", 4, -1, -1, "C");
+    //    Car car3("Toyota", "4runner", 2018, "Blue", 4, -1, 1, "C");
+    //    Car car4("Toyota", "lol", 2019, "Blue", 4, -1, 2, "C");
+    //
+    //    manager.addVehicle(car1);
+    //    manager.addVehicle(car2);
+    //    manager.addVehicle(car3);
+    //    manager.addVehicle(car4);
+    //
+    //
+    //    manager.addVehicle(car1);
+    //    manager.addVehicle(car2);
+    //    manager.addVehicle(car3);
+    //    manager.addVehicle(car4);
 
-    manager.addCustomer(cust);
-    manager.addCustomer(cust1);
-    manager.addCustomer(cust2);
-
-    cout << manager.getAllCustomers();
-
-    Car car1("Toyota", "Camry", 2016, "Blue", 4, -1, -1, "C");
-    Car car2("Toyota", "prius", 2017, "Blue", 4, -1, 0, "C");
-    Car car3("Toyota", "4runner", 2018, "Blue", 4, -1, 1, "C");
-    Car car4("Toyota", "lol", 2019, "Blue", 4, -1, 2, "C");
-
-    manager.addVehicle(car1);
-    manager.addVehicle(car2);
-    manager.addVehicle(car3);
-    manager.addVehicle(car4);
+    manager.importVehicles("dataset/all_out.csv");
+    cout << "AVAILABLE: \n" << manager.getAvailable() << endl;
+    manager.importCustomers("dataset/customers.csv");
+    cout << "CUSTOMERS: \n" << manager.getAllCustomers() << endl;
+    //manager.addVehicle(car2);
+    //cout << manager.getAllVehicles() << endl;
 
 
-    manager.addVehicle(car1);
-    manager.addVehicle(car2);
-    manager.addVehicle(car3);
-    manager.addVehicle(car4);
+    //cout << "RENTED\n" << manager.getRented() << endl;
 
-    cout << manager.getAllVehicles() << endl;
-    cout << manager.getAvailable() << endl;
-    cout << manager.getRented() << endl;
-    cout << manager.getDetail() << endl;
-    cout << manager.getRepair() << endl;
+    //manager.rentVehicle(&car2,&cust);
 
+    //cout << "AVAILABLE: \n" << manager.getAvailable() << endl;
+    //cout << "RENTED\n" << manager.getRented() << endl;
 
+    //car2.setCustomerID(431424);
+    //car2.setStatus(100000);
+
+    //cout << "RENTED\n" << manager.getRented() << endl;
+    //cout << manager.getAllVehicles() << endl;
+
+    //cout << manager.getDetail() << endl;
+    //cout << manager.getRepair() << endl;
 }

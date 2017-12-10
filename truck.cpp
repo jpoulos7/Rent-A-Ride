@@ -23,16 +23,7 @@ Truck::Truck(){
     
 }
 
-Truck::Truck(string make, string model, int year, string color, int numWheels, int customerID, int status, string type) {
-    this->setMake(make);
-    this->setModel(model);
-    this->setYear(year);
-    this->setColor(color);
-    this->setNumWheels(numWheels);
-    this->setCustomerID(customerID);
-    this->setStatus(status);
-    this->setType(type);
-}
+Truck::Truck(string make, string model, int year, string color, int numWheels, int customerID, int status, string type) :  Vehicle(make, model, year, color, numWheels, customerID, status, type) { }
 
 Truck::~Truck(){
 

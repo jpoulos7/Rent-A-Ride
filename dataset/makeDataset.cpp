@@ -9,8 +9,8 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
 
-    if (argc < 6){
-        cout << "Usage: " << argv[0] << " <inputfile> <outputfile> <numberofwheels> <maxnum> <minnum>" << endl;
+    if (argc < 7) {
+        cout << "Usage: " << argv[0] << " <inputfile> <outputfile> <numberofwheels> <type> <maxnum> <minnum>" << endl;
     }
 
     srand(time(NULL));
@@ -23,8 +23,9 @@ int main(int argc, char* argv[]) {
     string linebuffer;
 
     int wheels = atoi(argv[3]);
-    int maxnum = atoi(argv[4]);
-    int minnum = atoi(argv[5]);
+    int maxnum = atoi(argv[5]);
+    int minnum = atoi(argv[6]);
+    string type = argv[4];
     while(getline(file, linebuffer, '\r')) {
 
         int numCarsRand = rand() % maxnum + minnum;
@@ -32,7 +33,7 @@ int main(int argc, char* argv[]) {
         for (int i = 0; i < numCarsRand; i++){
             int colorRand = 0 + rand() % 9;
             int yearRand = 1999 + rand() % 19;
-            fprintf(output_file, "%s,%d,%s,%d,%d\n", linebuffer.c_str(), yearRand, colors[colorRand].c_str(), wheels, -1, -1);
+            fprintf(output_file, "%s,%d,%s,%d,%d,%d,%s\n", linebuffer.c_str(), yearRand, colors[colorRand].c_str(), wheels, -1, -1, type.c_str());
         }
     }
     fclose(output_file);
