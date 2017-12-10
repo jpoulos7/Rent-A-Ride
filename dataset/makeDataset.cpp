@@ -33,7 +33,16 @@ int main(int argc, char* argv[]) {
         for (int i = 0; i < numCarsRand; i++){
             int colorRand = 0 + rand() % 9;
             int yearRand = 1999 + rand() % 19;
-            fprintf(output_file, "%s,%d,%s,%d,%d,%d,%s\n", linebuffer.c_str(), yearRand, colors[colorRand].c_str(), wheels, -1, -1, type.c_str());
+            const int arrayNum[4] = {-1, 0, 1, 2};
+            int RandIndex = rand() % 4;
+            if (RandIndex == 1){
+                int cust = rand() % 499;
+                fprintf(output_file, "%s,%d,%s,%d,%d,%d,%s\n", linebuffer.c_str(), yearRand, colors[colorRand].c_str(), wheels, cust, 0, type.c_str());
+            } else {
+                fprintf(output_file, "%s,%d,%s,%d,%d,%d,%s\n", linebuffer.c_str(), yearRand, colors[colorRand].c_str(), wheels, -1, arrayNum[RandIndex], type.c_str());
+            }
+            //make model year color wheels id status type
+
         }
     }
     fclose(output_file);

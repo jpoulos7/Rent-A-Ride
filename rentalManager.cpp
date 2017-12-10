@@ -78,162 +78,176 @@ void RentalManager::addCustomer(Customer c) {
     customers.push_back(c);
 }
 
-string RentalManager::getAllCustomers() {
-    string list = "";
-    for (vector<Customer>::iterator it = customers.begin() ; it != customers.end(); ++it) {
-        list += it->toString() + "\n";
-    }
-    return list;
+vector<Customer> RentalManager::getAllCustomers() {
+    return customers;
 }
 
 void RentalManager::addVehicle(Vehicle v) {
-    allVehicles.push_back(v);
+    if (v.getStatus() == -1) {
+        available.push_back(v);
+    }
+    if (v.getStatus() == 0) {
+        rented.push_back(v);
+    }
+    if (v.getStatus() == 1) {
+        detailShop.push_back(v);
+    }
+    if (v.getStatus() == 2) {
+        repairShop.push_back(v);
+    }
 }
 
-string RentalManager::getAllVehicles() {
-    string list = "";
-    for (vector<Vehicle>::iterator it = allVehicles.begin() ; it != allVehicles.end(); ++it) {
-        list += it->toString() + " STATUS: " + to_string(it->getStatus()) + "\n";
-    }
-    return list;
+vector<Vehicle> RentalManager::getAllVehicles() {
+    return allVehicles;
 }
 
-string RentalManager::getAvailable() {
-    string list = "";
-    for (vector<Vehicle>::iterator it = allVehicles.begin() ; it != allVehicles.end(); ++it) {
-        if(it->getStatus() == -1){
-            list += it->toString() + "\n";
-        }
-    }
-    return list;
+vector<Vehicle> RentalManager::getAvailable() {
+    return available;
 }
 
-string RentalManager::getRented() {
-    string list = "";
-    for (vector<Vehicle>::iterator it = allVehicles.begin() ; it != allVehicles.end(); ++it) {
-        if(it->getStatus() == 0){
-            list += it->toStringRented() + "\n";
-        }
-    }
-    return list;
+vector<Vehicle> RentalManager::getRented() {
+    return rented;
 }
 
-string RentalManager::getDetail() {
-    string list = "";
-    for (vector<Vehicle>::iterator it = allVehicles.begin() ; it != allVehicles.end(); ++it) {
-        if(it->getStatus() == 1){
-            list += it->toString() + "\n";
-        }
-    }
-    return list;
+vector<Vehicle> RentalManager::getDetail() {
+    return detailShop;
 }
 
-string RentalManager::getRepair() {
-    string list = "";
-    for (vector<Vehicle>::iterator it = allVehicles.begin() ; it != allVehicles.end(); ++it) {
-        if(it->getStatus() == 2){
-            list += it->toString() + "\n";
-        }
-    }
-    return list;
+vector<Vehicle> RentalManager::getRepair() {
+    return repairShop;
 }
 
 void RentalManager::rentVehicle(Vehicle *v, Customer *c) {
-    for (vector<Vehicle>::iterator it = allVehicles.begin() ; it != allVehicles.end(); ++it) {
-        if(it->toString() == v->toString()){
-            it->setStatus(0);
-            it->setCustomerID(c->getCustomerID());
+    for (int i = 0; i < available.size(); i++){
+        if (available[i].toString() == v->toString()){
+            available[i].setStatus(0);
+            available[i].setCustomerID(c->getCustomerID());
+            rented.push_back(available[i]);
+            available.erase(available.begin() + i);
+            return;
         }
     }
-
 }
 
 void RentalManager::returnVehicle(Vehicle v) {
-    for (vector<Vehicle>::iterator it = allVehicles.begin() ; it != allVehicles.end(); ++it) {
-        if(it->toString() == v.toString()){
-            v.setCustomerID(-1);
-            v.setStatus(1);
+    for (int i = 0; i < rented.size(); i++){
+        if (rented[i].toStringRented() == v.toStringRented()){
+            rented[i].setStatus(1);
+            rented[i].setCustomerID(-1);
+            detailShop.push_back(rented[i]);
+            rented.erase(rented.begin() + i);
+            return;
         }
     }
+
 }
 
 void RentalManager::returnVehicleProblems(Vehicle v) {
-    for (vector<Vehicle>::iterator it = allVehicles.begin() ; it != allVehicles.end(); ++it) {
-        if(it->toString() == v.toString()){
-            v.setCustomerID(-1);
-            v.setStatus(2);
+    for (int i = 0; i < rented.size(); i++){
+        if (rented[i].toStringRented() == v.toStringRented()){
+            rented[i].setStatus(2);
+            rented[i].setCustomerID(-1);
+            repairShop.push_back(rented[i]);
+            rented.erase(rented.begin() + i);
+            return;
         }
     }
 }
 
 
 void RentalManager::repairVehicle(Vehicle v) {
-    for (vector<Vehicle>::iterator it = allVehicles.begin() ; it != allVehicles.end(); ++it) {
-        if(it->toString() == v.toString()){
-            v.setStatus(1);
+    for (int i = 0; i < repairShop.size(); i++){
+        if (repairShop[i].toString() == v.toString()){
+            repairShop[i].setStatus(1);
+            detailShop.push_back(repairShop[i]);
+            repairShop.erase(repairShop.begin() + i);
+            return;
         }
     }
 }
 
 void RentalManager::detailVehicle(Vehicle v) {
-    for (vector<Vehicle>::iterator it = allVehicles.begin() ; it != allVehicles.end(); ++it) {
-        if(it->toString() == v.toString()){
-            v.setStatus(-1);
+    for (int i = 0; i < detailShop.size(); i++){
+        if (detailShop[i].toString() == v.toString()){
+            detailShop[i].setStatus(-1);
+            available.push_back(detailShop[i]);
+            detailShop.erase(detailShop.begin() + i);
+            return;
         }
     }
 }
 
+void RentalManager::searchName(string token) {
+    //vector<Customer> found;
+    found.clear();
+    int id = -1;
+    for (int i = 0; i < customers.size(); i++){
+        if (customers[i].getFirstName() == token || customers[i].getLastName() == token || customers[i].getCustomerID() == atoi(token.c_str())){
+            id = customers[i].getCustomerID();
+        }
+    }
 
-int main(int argc, char* argv[]) {
-
-    RentalManager manager;
-    //Customer cust("John", "Poulos", 150);
-    //    Customer cust1("John", "Poulos", 1);
-    //    Customer cust2("John", "Poulos", 2);
-    //
-    //    manager.addCustomer(cust);
-    //    manager.addCustomer(cust1);
-    //    manager.addCustomer(cust2);
-    //
-    //    cout << manager.getAllCustomers();
-    //
-    //    Car car1("Toyota", "Camry", 2016, "Blue", 4, -1, -1, "C");
-    //Car car2("Toyota", "prius", 2017, "Blue", 4, -1, -1, "C");
-    //    Car car3("Toyota", "4runner", 2018, "Blue", 4, -1, 1, "C");
-    //    Car car4("Toyota", "lol", 2019, "Blue", 4, -1, 2, "C");
-    //
-    //    manager.addVehicle(car1);
-    //    manager.addVehicle(car2);
-    //    manager.addVehicle(car3);
-    //    manager.addVehicle(car4);
-    //
-    //
-    //    manager.addVehicle(car1);
-    //    manager.addVehicle(car2);
-    //    manager.addVehicle(car3);
-    //    manager.addVehicle(car4);
-
-    manager.importVehicles("dataset/all_out.csv");
-    cout << "AVAILABLE: \n" << manager.getAvailable() << endl;
-    manager.importCustomers("dataset/customers.csv");
-    cout << "CUSTOMERS: \n" << manager.getAllCustomers() << endl;
-    //manager.addVehicle(car2);
-    //cout << manager.getAllVehicles() << endl;
-
-
-    //cout << "RENTED\n" << manager.getRented() << endl;
-
-    //manager.rentVehicle(&car2,&cust);
-
-    //cout << "AVAILABLE: \n" << manager.getAvailable() << endl;
-    //cout << "RENTED\n" << manager.getRented() << endl;
-
-    //car2.setCustomerID(431424);
-    //car2.setStatus(100000);
-
-    //cout << "RENTED\n" << manager.getRented() << endl;
-    //cout << manager.getAllVehicles() << endl;
-
-    //cout << manager.getDetail() << endl;
-    //cout << manager.getRepair() << endl;
+    for (int i = 0; i < rented.size(); i++){
+        if(rented[i].getCustomerID() == id){
+            found.push_back(rented[i]);
+        }
+    }
 }
+
+vector<Vehicle> RentalManager::getFound(){
+    return found;
+}
+
+//int main(int argc, char* argv[]) {
+
+//RentalManager manager;
+//Customer cust("John", "Poulos", 150);
+//    Customer cust1("John", "Poulos", 1);
+//    Customer cust2("John", "Poulos", 2);
+//
+//    manager.addCustomer(cust);
+//    manager.addCustomer(cust1);
+//    manager.addCustomer(cust2);
+//
+//    cout << manager.getAllCustomers();
+//
+//    Car car1("Toyota", "Camry", 2016, "Blue", 4, -1, -1, "C");
+//Car car2("Toyota", "prius", 2017, "Blue", 4, -1, -1, "C");
+//    Car car3("Toyota", "4runner", 2018, "Blue", 4, -1, 1, "C");
+//    Car car4("Toyota", "lol", 2019, "Blue", 4, -1, 2, "C");
+//
+//    manager.addVehicle(car1);
+//    manager.addVehicle(car2);
+//    manager.addVehicle(car3);
+//    manager.addVehicle(car4);
+//
+//
+//    manager.addVehicle(car1);
+//    manager.addVehicle(car2);
+//    manager.addVehicle(car3);
+//    manager.addVehicle(car4);
+
+//manager.importVehicles("dataset/all_out.csv");
+//    cout << "AVAILABLE: \n" << manager.getAvailable() << endl;
+//    manager.importCustomers("dataset/customers.csv");
+//    cout << "CUSTOMERS: \n" << manager.getAllCustomers() << endl;
+//manager.addVehicle(car2);
+//cout << manager.getAllVehicles() << endl;
+
+
+//cout << "RENTED\n" << manager.getRented() << endl;
+
+//manager.rentVehicle(&car2,&cust);
+
+//cout << "AVAILABLE: \n" << manager.getAvailable() << endl;
+//cout << "RENTED\n" << manager.getRented() << endl;
+
+//car2.setCustomerID(431424);
+//car2.setStatus(100000);
+
+//cout << "RENTED\n" << manager.getRented() << endl;
+//cout << manager.getAllVehicles() << endl;
+
+//cout << manager.getDetail() << endl;
+//cout << manager.getRepair() << endl;
+//}

@@ -25,11 +25,12 @@ private:
 
     //std::unordered_set<Car> available;
     std::vector<Vehicle> allVehicles;
-    //std::vector<Vehicle> available;
-    //std::vector<Vehicle> rented;
-    //std::vector<Vehicle> detailShop;
-    //std::vector<Vehicle> repairShop;
+    std::vector<Vehicle> available;
+    std::vector<Vehicle> rented;
+    std::vector<Vehicle> detailShop;
+    std::vector<Vehicle> repairShop;
     std::vector<Customer> customers;
+    std::vector<Vehicle> found;
     int idCount;
 
 public:
@@ -41,16 +42,17 @@ public:
     void importCustomers(string filename);
 
     void addCustomer(Customer c);
-    string getAllCustomers();
+    vector<Customer> getAllCustomers();
 
     void addVehicle(Vehicle v);
-    string getAllVehicles();
+    vector<Vehicle> getAllVehicles();
 
     //Returns the string for each column in the display
-    string getAvailable();
-    string getRented();
-    string getDetail();
-    string getRepair();
+    vector<Vehicle> getAvailable();
+    vector<Vehicle> getRented();
+    vector<Vehicle> getDetail();
+    vector<Vehicle> getRepair();
+    vector<Vehicle> getFound();
 
     void rentVehicle(Vehicle *v, Customer *c);
     void returnVehicle(Vehicle v);
@@ -58,6 +60,8 @@ public:
 
     void repairVehicle(Vehicle v);
     void detailVehicle(Vehicle v);
+
+    void searchName(string token);
 
 
 
