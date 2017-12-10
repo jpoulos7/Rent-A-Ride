@@ -10,6 +10,7 @@
 #include <FL/fl_draw.H>
 #include <FL/Fl_Widget.H>
 #include <FL/Fl_Choice.H>
+#include <FL/fl_ask.H>
 #include <stdlib.h>
 #include <iostream>
 #include <string>
@@ -29,19 +30,19 @@ Fl_Double_Window win(1500, 1200, "Rent-A-Ride");
 /**Creating a listview for the customers*/
 Fl_Hold_Browser customerView(40,80,200,200,"Customers");
 /**Creating a listview for the available vehicles*/
-Fl_Hold_Browser avail(290,80,225,200,"Available Vehicles");
+Fl_Hold_Browser avail(280,80,225,200,"Available Vehicles");
 /**Creating a listview for the cars out for rent*/
-Fl_Hold_Browser rent(540,80,270,200,"Rent");
+Fl_Hold_Browser rent(545,80,270,200,"Rent");
 /**Creating a listview for the cars out for detail*/
-Fl_Hold_Browser detail(850,80,240,200,"Out for detail");
+Fl_Hold_Browser detail(855,80,240,200,"Out for detail");
 /**Creating a listview for the cars out for repair*/
-Fl_Hold_Browser repair(1100,80,240,200,"Out for repair");
+Fl_Hold_Browser repair(1135,80,240,200,"Out for repair");
 
 Fl_Button rentVehicle(40,300,200,30,"Rent vehicle");
-Fl_Button returnVehicle(290,300,200,30,"Return vehicle");
-Fl_Button returnVehicleProblem(550,300,200,30,"Return Vehicle (With problem)");
-Fl_Button repairVehicle(1040,300,200,30,"Repair vehicle");
-Fl_Button detailVehicle(780,300,200,30,"Detail vehicle");
+Fl_Button returnVehicle(280,300,225,30,"Return vehicle");
+Fl_Button returnVehicleProblem(545,300,270,30,"Return Vehicle (With problem)");
+Fl_Button repairVehicle(1135,300,240,30,"Repair vehicle");
+Fl_Button detailVehicle(855,300,240,30,"Detail vehicle");
 
 Fl_Input personName(100,400,300,30,"First Name");
 Fl_Input personLastName(100,450,300,30,"Last Name");
@@ -56,15 +57,18 @@ Fl_Button addVehicle(600,650,200,30,"Add Vehicle");
 //Search
 Fl_Input searchPerson(920,400,200,30,"Search by Name: ");
 Fl_Button searchPersonButton(1140,400,100,30,"Search By Name");
-Fl_Hold_Browser results(920,500,325,100);
+Fl_Hold_Browser results(920,450,325,100,"Results");
+
 
 RentalManager manager;
 
+//RentalManager manager;
+
 /**
-* This function will handle updating all listview contents
-* @param none
-* @return none
-**/
+ * This function will handle updating all listview contents
+ * @param none
+ * @return none
+ **/
 void updateView() {
 
     customerView.clear();
@@ -127,40 +131,48 @@ void rentCallback(Fl_Widget* widget, void* v){
             i = vSize+1;
         }
     }
-    std::string custSelect = (std::string) customerView.text(customerFound);
-    std::string vehSelect = (std::string) avail.text(vehicleFound);
 
-    std::string token;
-    std::string cust[3];
-    int count = 0;
-    istringstream ss(custSelect);
-    while(getline(ss, token, ' ')) {
-        cust[count] = token;
-        count++;
+    if(customerFound == -1){
+        fl_alert("Select the customer who will rent the vehicle");
     }
-    Customer tempCust(cust[0], cust[1], atoi(cust[2].c_str()));
+    else if(vehicleFound == -1){
+        fl_alert("Select the vehicle to be rented");
+    }
+    else{
+        std::string custSelect = (std::string) customerView.text(customerFound);
+        std::string vehSelect = (std::string) avail.text(vehicleFound);
+        std::string token;
+        std::string cust[3];
+        int count = 0;
+        istringstream ss(custSelect);
+        while(getline(ss, token, ' ')) {
+            cust[count] = token;
+            count++;
+        }
+        Customer tempCust(cust[0], cust[1], atoi(cust[2].c_str()));
 
-    std::string veh[5];
-    count = 0;
-    istringstream sd(vehSelect);
-    while(getline(sd, token, ' ')) {
-        veh[count] = token;
-        count++;
-    }
-    if(veh[4] == "C") {
-        Car tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,-1,-1,"C");
-        manager.rentVehicle(&tempVeh, &tempCust);
-    }
-    if(veh[4] == "T") {
-        Truck tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,-1,-1,"T");
-        manager.rentVehicle(&tempVeh, &tempCust);
-    }
-    if(veh[4] == "S") {
-        SUV tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,-1,-1,"S");
-        manager.rentVehicle(&tempVeh, &tempCust);
-    }
+        std::string veh[5];
+        count = 0;
+        istringstream sd(vehSelect);
+        while(getline(sd, token, ' ')) {
+            veh[count] = token;
+            count++;
+        }
+        if(veh[4] == "C") {
+            Car tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,-1,-1,"C");
+            manager.rentVehicle(&tempVeh, &tempCust);
+        }
+        if(veh[4] == "T") {
+            Truck tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,-1,-1,"T");
+            manager.rentVehicle(&tempVeh, &tempCust);
+        }
+        if(veh[4] == "S") {
+            SUV tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,-1,-1,"S");
+            manager.rentVehicle(&tempVeh, &tempCust);
+        }
 
-    updateView();
+        updateView();
+    }
 }
 
 void customerCallback(Fl_Widget* widget, void* v){
@@ -169,6 +181,11 @@ void customerCallback(Fl_Widget* widget, void* v){
     //int cSize = customer->size();
     string fname = (std::string) personName.value();
     string lname = (std::string) personLastName.value();
+    if (fname == "" || lname == ""){
+        fl_alert("Please enter a first and last name");
+        return;
+    }
+
     Customer temp(fname, lname, -1);
     manager.addCustomer(temp);
     updateView();
@@ -183,28 +200,34 @@ void returnCallback(Fl_Widget* widget, void* v){
             i = vSize+1;
         }
     }
-    std::string vehSelect = (std::string) rent.text(vehicleFound);
 
-    std::string token;
-    std::string veh[6];
-    int count = 0;
-    istringstream sd(vehSelect);
-    while(getline(sd, token, ' ')) {
-        veh[count] = token;
-        count++;
+    if(vehicleFound == -1){
+        fl_alert("No vehicle selected!");
+        return;
     }
+    else{
+        std::string vehSelect = (std::string) rent.text(vehicleFound);
+        std::string token;
+        std::string veh[6];
+        int count = 0;
+        istringstream sd(vehSelect);
+        while(getline(sd, token, ' ')) {
+            veh[count] = token;
+            count++;
+        }
 
-    if(veh[4] == "C") {
-        Car tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,atoi(veh[5].c_str()),0,"C");
-        manager.returnVehicle(tempVeh);
-    } else if(veh[4] == "T") {
-        Truck tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,atoi(veh[5].c_str()),0,"T");
-        manager.returnVehicle(tempVeh);
-    } else if(veh[4] == "S") {
-        SUV tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,atoi(veh[5].c_str()),0,"S");
-        manager.returnVehicle(tempVeh);
+        if(veh[4] == "C") {
+            Car tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,atoi(veh[5].c_str()),0,"C");
+            manager.returnVehicle(tempVeh);
+        } else if(veh[4] == "T") {
+            Truck tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,atoi(veh[5].c_str()),0,"T");
+            manager.returnVehicle(tempVeh);
+        } else if(veh[4] == "S") {
+            SUV tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,atoi(veh[5].c_str()),0,"S");
+            manager.returnVehicle(tempVeh);
+        }
+        updateView();
     }
-    updateView();
 }
 
 void returnProblemCallback(Fl_Widget* widget, void* v){
@@ -216,28 +239,34 @@ void returnProblemCallback(Fl_Widget* widget, void* v){
             i = vSize+1;
         }
     }
-    std::string vehSelect = (std::string) rent.text(vehicleFound);
-
-    std::string token;
-    std::string veh[6];
-    int count = 0;
-    istringstream sd(vehSelect);
-    while(getline(sd, token, ' ')) {
-        veh[count] = token;
-        count++;
+    if(vehicleFound == -1){
+        fl_alert("No vehicle selected!");
+        return;
     }
+    else{
+        std::string vehSelect = (std::string) rent.text(vehicleFound);
 
-    if(veh[4] == "C") {
-        Car tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,atoi(veh[5].c_str()),0,"C");
-        manager.returnVehicleProblems(tempVeh);
-    } else if(veh[4] == "T") {
-        Truck tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,atoi(veh[5].c_str()),0,"T");
-        manager.returnVehicleProblems(tempVeh);
-    } else if(veh[4] == "S") {
-        SUV tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,atoi(veh[5].c_str()),0,"S");
-        manager.returnVehicleProblems(tempVeh);
+        std::string token;
+        std::string veh[6];
+        int count = 0;
+        istringstream sd(vehSelect);
+        while(getline(sd, token, ' ')) {
+            veh[count] = token;
+            count++;
+        }
+
+        if(veh[4] == "C") {
+            Car tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,atoi(veh[5].c_str()),0,"C");
+            manager.returnVehicleProblems(tempVeh);
+        } else if(veh[4] == "T") {
+            Truck tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,atoi(veh[5].c_str()),0,"T");
+            manager.returnVehicleProblems(tempVeh);
+        } else if(veh[4] == "S") {
+            SUV tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,atoi(veh[5].c_str()),0,"S");
+            manager.returnVehicleProblems(tempVeh);
+        }
+        updateView();
     }
-    updateView();
 }
 
 void detailCallback(Fl_Widget* widget, void* v){
@@ -249,28 +278,34 @@ void detailCallback(Fl_Widget* widget, void* v){
             i = vSize+1;
         }
     }
-    std::string vehSelect = (std::string) detail.text(vehicleFound);
 
-    std::string token;
-    std::string veh[5];
-    int count = 0;
-    istringstream sd(vehSelect);
-    while(getline(sd, token, ' ')) {
-        veh[count] = token;
-        count++;
-    }
+    if(vehicleFound == -1){
+        fl_alert("No vehicle selected!");
+        return;
 
-    if(veh[4] == "C") {
-        Car tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,atoi(veh[5].c_str()),0,"C");
-        manager.detailVehicle(tempVeh);
-    } else if(veh[4] == "T") {
-        Truck tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,atoi(veh[5].c_str()),0,"T");
-        manager.detailVehicle(tempVeh);
-    } else if(veh[4] == "S") {
-        SUV tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,atoi(veh[5].c_str()),0,"S");
-        manager.detailVehicle(tempVeh);
+    } else{
+        std::string vehSelect = (std::string) detail.text(vehicleFound);
+        std::string token;
+        std::string veh[5];
+        int count = 0;
+        istringstream sd(vehSelect);
+        while(getline(sd, token, ' ')) {
+            veh[count] = token;
+            count++;
+        }
+
+        if(veh[4] == "C") {
+            Car tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,atoi(veh[5].c_str()),0,"C");
+            manager.detailVehicle(tempVeh);
+        } else if(veh[4] == "T") {
+            Truck tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,atoi(veh[5].c_str()),0,"T");
+            manager.detailVehicle(tempVeh);
+        } else if(veh[4] == "S") {
+            SUV tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,atoi(veh[5].c_str()),0,"S");
+            manager.detailVehicle(tempVeh);
+        }
+        updateView();
     }
-    updateView();
 }
 
 void repairCallback(Fl_Widget* widget, void* v){
@@ -282,28 +317,34 @@ void repairCallback(Fl_Widget* widget, void* v){
             i = vSize+1;
         }
     }
-    std::string vehSelect = (std::string) repair.text(vehicleFound);
-
-    std::string token;
-    std::string veh[5];
-    int count = 0;
-    istringstream sd(vehSelect);
-    while(getline(sd, token, ' ')) {
-        veh[count] = token;
-        count++;
+    if(vehicleFound == -1){
+        fl_alert("No vehicle selected!");
+        return;
     }
+    else{
+        std::string vehSelect = (std::string) repair.text(vehicleFound);
 
-    if(veh[4] == "C") {
-        Car tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,atoi(veh[5].c_str()),0,"C");
-        manager.repairVehicle(tempVeh);
-    } else if(veh[4] == "T") {
-        Truck tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,atoi(veh[5].c_str()),0,"T");
-        manager.repairVehicle(tempVeh);
-    } else if(veh[4] == "S") {
-        SUV tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,atoi(veh[5].c_str()),0,"S");
-        manager.repairVehicle(tempVeh);
+        std::string token;
+        std::string veh[5];
+        int count = 0;
+        istringstream sd(vehSelect);
+        while(getline(sd, token, ' ')) {
+            veh[count] = token;
+            count++;
+        }
+
+        if(veh[4] == "C") {
+            Car tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,atoi(veh[5].c_str()),0,"C");
+            manager.repairVehicle(tempVeh);
+        } else if(veh[4] == "T") {
+            Truck tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,atoi(veh[5].c_str()),0,"T");
+            manager.repairVehicle(tempVeh);
+        } else if(veh[4] == "S") {
+            SUV tempVeh(veh[0],veh[1],atoi(veh[2].c_str()),veh[3],4,atoi(veh[5].c_str()),0,"S");
+            manager.repairVehicle(tempVeh);
+        }
+        updateView();
     }
-    updateView();
 }
 
 void addVehCallback(Fl_Widget* widget, void* v){
@@ -313,6 +354,11 @@ void addVehCallback(Fl_Widget* widget, void* v){
     string year = (string) vehYear.value();
     int color = vehColor.value();
     int type = vehType.value();
+
+    if (make == "" || model == "" || year == "" || color == -1 || type == -1){
+        fl_alert("Please fill out the entire form");
+        return;
+    }
 
     if (type == 0){
         Car temp(make, model, atoi(year.c_str()), colors[color], 4, -1, -1, "C");
@@ -330,6 +376,10 @@ void addVehCallback(Fl_Widget* widget, void* v){
 
 void searchNameCallback(Fl_Widget* widget, void* v){
     string token = (string) searchPerson.value();
+    if (token == "") {
+        fl_alert("Please enter a first name, last name, or id to search for.");
+        return;
+    }
     manager.searchName(token);
     updateView();
 }
@@ -348,7 +398,7 @@ int main(int argc, char **argv) {
     vehType.add("Car");
     vehType.add("Truck");
     vehType.add("SUV");
-
+    
     vehColor.add("Black");
     vehColor.add("Blue");
     vehColor.add("Red");
@@ -358,17 +408,17 @@ int main(int argc, char **argv) {
     vehColor.add("Gray");
     vehColor.add("Green");
     vehColor.add("Brown");
-
-
+    
+    
     //manager.importVehicles("dataset/all_out.csv");
     manager.importVehicles("dataset/rand_out.csv");
     manager.importCustomers("dataset/customers.csv");
-
-
+    
+    
     updateView();
-
-
-
+    
+    
+    
     win.end();
     //win.resizable(browser);
     win.show(argc,argv);
