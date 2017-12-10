@@ -107,10 +107,8 @@ string RentalManager::getAvailable() {
 string RentalManager::getRented() {
     string list = "";
     for (vector<Vehicle>::iterator it = allVehicles.begin() ; it != allVehicles.end(); ++it) {
-        //cout << "STATUS: " << it->getStatus() << endl;
         if(it->getStatus() == 0){
-            //cout << "Found rented! " << it->toString() << endl;
-            list += it->toString() + "\n";
+            list += it->toStringRented() + "\n";
         }
     }
     return list;

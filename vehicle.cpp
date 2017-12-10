@@ -108,3 +108,7 @@ string Vehicle::getType() {
 string Vehicle::toString(){
     return make + " " + model + " " + to_string(year) + " " + color + " " + type;
 }
+
+string Vehicle::toStringRented(){
+    return make + " " + model + " " + to_string(year) + " " + color + " " + type + " " + to_string(customerID);
+}

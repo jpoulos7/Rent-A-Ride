@@ -59,6 +59,7 @@ public:
     void setType(string type);
     string getType();
     string toString();
+    string toStringRented();
 
 };
 
