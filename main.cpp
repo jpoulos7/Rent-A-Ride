@@ -108,7 +108,12 @@ void updateView() {
         results.insert(i,foundList[i].toStringRented().c_str());
     }
 }
-
+/**
+* Rental callback that will shift the selected vehicle from available to rented under customer
+* @param widget, the widget to be editted as a result of clicking
+* @param v pointer to the button being clicked
+*
+**/
 void rentCallback(Fl_Widget* widget, void* v){
     //std::string postSelect = (std::string) avail.text(vehicleFound) + " --- "+customer.text(customerFound);
     int cSize = customerView.size();
@@ -174,7 +179,12 @@ void rentCallback(Fl_Widget* widget, void* v){
         updateView();
     }
 }
-
+/**
+* Customer callback that will add a new customer to the browser
+* @param widget, the widget to be editted as a result of clicking
+* @param v pointer to the button being clicked
+*
+**/
 void customerCallback(Fl_Widget* widget, void* v){
     //Set customerID to -1
     //Fl_Hold_Browser* customer = (Fl_Hold_Browser*)v;
@@ -190,7 +200,12 @@ void customerCallback(Fl_Widget* widget, void* v){
     manager.addCustomer(temp);
     updateView();
 }
-
+/**
+* Return callback that will return a vehicle to the out for detail shop
+* @param widget, the widget to be editted as a result of clicking
+* @param v pointer to the button being clicked
+*
+**/
 void returnCallback(Fl_Widget* widget, void* v){
     int vSize = rent.size();
     int vehicleFound = -1;
@@ -229,7 +244,12 @@ void returnCallback(Fl_Widget* widget, void* v){
         updateView();
     }
 }
-
+/**
+* Return callback that will shift the selected vehicle from available to out under repair
+* @param widget, the widget to be editted as a result of clicking
+* @param v pointer to the button being clicked
+*
+**/
 void returnProblemCallback(Fl_Widget* widget, void* v){
     int vSize = rent.size();
     int vehicleFound = -1;
@@ -268,7 +288,12 @@ void returnProblemCallback(Fl_Widget* widget, void* v){
         updateView();
     }
 }
-
+/**
+* Detail callback that will shift the selected vehicle from detail to available
+* @param widget, the widget to be editted as a result of clicking
+* @param v pointer to the button being clicked
+*
+**/
 void detailCallback(Fl_Widget* widget, void* v){
     int vSize = detail.size();
     int vehicleFound = -1;
@@ -307,7 +332,12 @@ void detailCallback(Fl_Widget* widget, void* v){
         updateView();
     }
 }
-
+/**
+* Repair callback that will shift the selected vehicle from repair to available
+* @param widget, the widget to be editted as a result of clicking
+* @param v pointer to the button being clicked
+*
+**/
 void repairCallback(Fl_Widget* widget, void* v){
     int vSize = repair.size();
     int vehicleFound = -1;
@@ -346,7 +376,12 @@ void repairCallback(Fl_Widget* widget, void* v){
         updateView();
     }
 }
-
+/**
+* addVehicle callback that will add a new vehicle to the list
+* @param widget, the widget to be editted as a result of clicking
+* @param v pointer to the button being clicked
+*
+**/
 void addVehCallback(Fl_Widget* widget, void* v){
     string colors[] = {"Black", "Blue", "Red", "Yellow", "White", "Silver", "Gray", "Green", "Brown"};
     string make = (std::string) vehMake.value();
@@ -373,7 +408,12 @@ void addVehCallback(Fl_Widget* widget, void* v){
 
     updateView();
 }
-
+/**
+* Search callback that will shift the selected vehicle from available to rented under customer
+* @param widget, the widget to be editted as a result of clicking
+* @param v pointer to the button being clicked
+*
+**/
 void searchNameCallback(Fl_Widget* widget, void* v){
     string token = (string) searchPerson.value();
     if (token == "") {
@@ -398,7 +438,7 @@ int main(int argc, char **argv) {
     vehType.add("Car");
     vehType.add("Truck");
     vehType.add("SUV");
-    
+
     vehColor.add("Black");
     vehColor.add("Blue");
     vehColor.add("Red");
@@ -408,17 +448,9 @@ int main(int argc, char **argv) {
     vehColor.add("Gray");
     vehColor.add("Green");
     vehColor.add("Brown");
-    
-    
-    //manager.importVehicles("dataset/all_out.csv");
     manager.importVehicles("dataset/rand_out.csv");
     manager.importCustomers("dataset/customers.csv");
-    
-    
     updateView();
-    
-    
-    
     win.end();
     //win.resizable(browser);
     win.show(argc,argv);
