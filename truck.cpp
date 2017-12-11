@@ -19,10 +19,16 @@
 
 using namespace std;
 
+/**
+* Truck class constructor.
+**/
 Truck::Truck(){
-    
+
 }
 
+/**
+* Truck class constructor takes in several parameters that apply to a Truck object.
+**/
 Truck::Truck(string make, string model, int year, string color, int numWheels, int customerID, int status, string type) :  Vehicle(make, model, year, color, numWheels, customerID, status, type) { }
 
 Truck::~Truck(){

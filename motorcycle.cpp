@@ -8,7 +8,7 @@
  *
  * @section DESCRIPTION
  *
- * Implementation file for Motorcycle.
+ * Implementation file for Motorcycle, child of car.cpp.
  *
  */
 
@@ -20,10 +20,16 @@
 
 using namespace std;
 
+/**
+* Motorcycle class constructor.
+**/
 Motorcycle::Motorcycle(){
-    
+
 }
 
+/**
+* Motorcycle class constructor takes in several parameters that apply to a Motorcycle object.
+**/
 Motorcycle::Motorcycle(string make, string model, int year, string color, int numWheels, int customerID, int status, string type) :  Vehicle(make, model, year, color, numWheels, customerID, status, type) { }
 
 Motorcycle::~Motorcycle(){

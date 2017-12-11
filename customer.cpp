@@ -19,14 +19,14 @@
 using namespace std;
 
 /**
-* Class constructor.
+* Customer class constructor.
 **/
 Customer::Customer(){
 
 }
 
 /**
-* Class constructor takes in strings firstName and lastName
+* Customer class constructor takes in strings firstName and lastName
 * and int customerID to populate those parameters for a specific customer.
 **/
 Customer::Customer(string firstName, string lastName, int customerID){

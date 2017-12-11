@@ -1,4 +1,17 @@
-
+/**
+ *
+ * @file main.cpp
+ * @author John Poulos, jpoulos2
+ * @author Mohamed Salad, msalad
+ * @date Dec 2, 2017
+ *
+ * @brief ITCS 3112 Final Project
+ *
+ * @section DESCRIPTION
+ *
+ * Driver for Rent-A-Ride project.
+ *
+ */
 #include <FL/Fl.H>
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Browser.H>
