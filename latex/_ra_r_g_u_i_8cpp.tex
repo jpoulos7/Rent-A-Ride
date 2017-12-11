@@ -1,0 +1,320 @@
+\hypertarget{_ra_r_g_u_i_8cpp}{}\section{Ra\+R\+G\+U\+I.\+cpp File Reference}
+\label{_ra_r_g_u_i_8cpp}\index{Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}}
+
+
+I\+T\+CS 3112 Rent-\/\+A-\/\+Ride Final Project.  
+
+
+{\ttfamily \#include $<$F\+L/\+Fl.\+H$>$}\newline
+{\ttfamily \#include $<$F\+L/\+Fl\+\_\+\+Double\+\_\+\+Window.\+H$>$}\newline
+{\ttfamily \#include $<$F\+L/\+Fl\+\_\+\+Browser.\+H$>$}\newline
+{\ttfamily \#include $<$F\+L/\+Fl\+\_\+\+Hold\+\_\+\+Browser.\+H$>$}\newline
+{\ttfamily \#include $<$F\+L/\+Fl\+\_\+\+Input.\+H$>$}\newline
+{\ttfamily \#include $<$F\+L/\+Fl\+\_\+\+Output.\+H$>$}\newline
+{\ttfamily \#include $<$F\+L/\+Fl\+\_\+\+Table.\+H$>$}\newline
+{\ttfamily \#include $<$F\+L/\+Fl\+\_\+\+Button.\+H$>$}\newline
+{\ttfamily \#include $<$F\+L/fl\+\_\+draw.\+H$>$}\newline
+{\ttfamily \#include $<$F\+L/\+Fl\+\_\+\+Widget.\+H$>$}\newline
+{\ttfamily \#include $<$F\+L/\+Fl\+\_\+\+Choice.\+H$>$}\newline
+{\ttfamily \#include $<$F\+L/fl\+\_\+ask.\+H$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include \char`\"{}car.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}truck.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}suv.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}motorcycle.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}customer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}rental\+Manager.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Fl\+\_\+\+Double\+\_\+\+Window \hyperlink{_ra_r_g_u_i_8cpp_a33b64c7cf3f1bc66abe4eaafea28726e}{win} (1500, 700, \char`\"{}Rent-\/A-\/Ride\char`\"{})
+\item 
+Fl\+\_\+\+Hold\+\_\+\+Browser \hyperlink{_ra_r_g_u_i_8cpp_aa3c4a2d1a0d5026bc0d74a8e9ed4a2c3}{customer\+View} (40, 80, 200, 200,\char`\"{}Customers\char`\"{})
+\item 
+Fl\+\_\+\+Hold\+\_\+\+Browser \hyperlink{_ra_r_g_u_i_8cpp_ab07c2f2b9a395e63eec3e3c0fae7c0a8}{avail} (280, 80, 225, 200,\char`\"{}Available Vehicles\char`\"{})
+\item 
+Fl\+\_\+\+Hold\+\_\+\+Browser \hyperlink{_ra_r_g_u_i_8cpp_a74ccc960aca210a58a3e86b2e6dc75d8}{rent} (545, 80, 270, 200,\char`\"{}Rent\char`\"{})
+\item 
+Fl\+\_\+\+Hold\+\_\+\+Browser \hyperlink{_ra_r_g_u_i_8cpp_a1d5c803b3f82157eb10d9e3b39b45fed}{detail} (855, 80, 240, 200,\char`\"{}Out for detail\char`\"{})
+\item 
+Fl\+\_\+\+Hold\+\_\+\+Browser \hyperlink{_ra_r_g_u_i_8cpp_a28f722a1c103719a068d6b34b7ecec5e}{repair} (1135, 80, 240, 200,\char`\"{}Out for repair\char`\"{})
+\item 
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_a01b79528f8f713340097c5f4bc78156f}\label{_ra_r_g_u_i_8cpp_a01b79528f8f713340097c5f4bc78156f}} 
+Fl\+\_\+\+Button {\bfseries rent\+Vehicle} (40, 300, 200, 30,\char`\"{}Rent vehicle\char`\"{})
+\item 
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_ac1b712d69a4e6d57f5519dda3863f9db}\label{_ra_r_g_u_i_8cpp_ac1b712d69a4e6d57f5519dda3863f9db}} 
+Fl\+\_\+\+Button {\bfseries return\+Vehicle} (280, 300, 225, 30,\char`\"{}Return vehicle\char`\"{})
+\item 
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_a0c4000d514fab9af974e8e8909ea1598}\label{_ra_r_g_u_i_8cpp_a0c4000d514fab9af974e8e8909ea1598}} 
+Fl\+\_\+\+Button {\bfseries return\+Vehicle\+Problem} (545, 300, 270, 30,\char`\"{}Return \hyperlink{class_vehicle}{Vehicle} (With problem)\char`\"{})
+\item 
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_a66a636bb5678a70cb5cd54071a1b5a74}\label{_ra_r_g_u_i_8cpp_a66a636bb5678a70cb5cd54071a1b5a74}} 
+Fl\+\_\+\+Button {\bfseries repair\+Vehicle} (1135, 300, 240, 30,\char`\"{}Repair vehicle\char`\"{})
+\item 
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_a137ba323401e4e81322c77a00719d23b}\label{_ra_r_g_u_i_8cpp_a137ba323401e4e81322c77a00719d23b}} 
+Fl\+\_\+\+Button {\bfseries detail\+Vehicle} (855, 300, 240, 30,\char`\"{}Detail vehicle\char`\"{})
+\item 
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_a63379b93f2a988d903b9d1579ba3f80a}\label{_ra_r_g_u_i_8cpp_a63379b93f2a988d903b9d1579ba3f80a}} 
+Fl\+\_\+\+Input {\bfseries person\+Name} (100, 400, 300, 30,\char`\"{}First Name\char`\"{})
+\item 
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_a1de6af9feff9876c53fb47b0752e1c18}\label{_ra_r_g_u_i_8cpp_a1de6af9feff9876c53fb47b0752e1c18}} 
+Fl\+\_\+\+Input {\bfseries person\+Last\+Name} (100, 450, 300, 30,\char`\"{}Last Name\char`\"{})
+\item 
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_ac109fdfc648b844e81f4c64aed258145}\label{_ra_r_g_u_i_8cpp_ac109fdfc648b844e81f4c64aed258145}} 
+Fl\+\_\+\+Button {\bfseries add\+Customer} (100, 500, 300, 30,\char`\"{}Add customer\char`\"{})
+\item 
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_a8b1f3fb9849face95e4113c6af0f9aaf}\label{_ra_r_g_u_i_8cpp_a8b1f3fb9849face95e4113c6af0f9aaf}} 
+Fl\+\_\+\+Input {\bfseries veh\+Make} (600, 400, 200, 30,\char`\"{}Vehicle Make\char`\"{})
+\item 
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_acbf80f51d14e46e7f3bb0b7d2bb37858}\label{_ra_r_g_u_i_8cpp_acbf80f51d14e46e7f3bb0b7d2bb37858}} 
+Fl\+\_\+\+Input {\bfseries veh\+Model} (600, 450, 200, 30,\char`\"{}Vehicle Model\char`\"{})
+\item 
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_a0822cc8cc67ce6d996b17a3d03ab423e}\label{_ra_r_g_u_i_8cpp_a0822cc8cc67ce6d996b17a3d03ab423e}} 
+Fl\+\_\+\+Input {\bfseries veh\+Year} (600, 500, 200, 30,\char`\"{}Vehicle Year\char`\"{})
+\item 
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_ad399731ae97b69198e4577d9877c05a0}\label{_ra_r_g_u_i_8cpp_ad399731ae97b69198e4577d9877c05a0}} 
+Fl\+\_\+\+Choice {\bfseries veh\+Color} (600, 550, 200, 30,\char`\"{}Vehicle Color\char`\"{})
+\item 
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_abe2a518adeb4a1a1bdafc9735543bfbe}\label{_ra_r_g_u_i_8cpp_abe2a518adeb4a1a1bdafc9735543bfbe}} 
+Fl\+\_\+\+Choice {\bfseries veh\+Type} (600, 600, 200, 30,\char`\"{}Type\char`\"{})
+\item 
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_aacacb7bf671aa97ac3d6b8f5c836e733}\label{_ra_r_g_u_i_8cpp_aacacb7bf671aa97ac3d6b8f5c836e733}} 
+Fl\+\_\+\+Button {\bfseries add\+Vehicle} (600, 650, 200, 30,\char`\"{}Add \hyperlink{class_vehicle}{Vehicle}\char`\"{})
+\item 
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_a0af5f5911b6cd665441430fa1b19323a}\label{_ra_r_g_u_i_8cpp_a0af5f5911b6cd665441430fa1b19323a}} 
+Fl\+\_\+\+Input {\bfseries search\+Person} (920, 400, 200, 30,\char`\"{}Search by Name\+: \char`\"{})
+\item 
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_a3ffcc6b2c165232863f709d90fbb3141}\label{_ra_r_g_u_i_8cpp_a3ffcc6b2c165232863f709d90fbb3141}} 
+Fl\+\_\+\+Button {\bfseries search\+Person\+Button} (1140, 400, 100, 30,\char`\"{}Search\char`\"{})
+\item 
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_abb589d82ad3b8aa3f27eb8c51be38bb1}\label{_ra_r_g_u_i_8cpp_abb589d82ad3b8aa3f27eb8c51be38bb1}} 
+Fl\+\_\+\+Hold\+\_\+\+Browser {\bfseries results} (920, 450, 325, 100,\char`\"{}Results\char`\"{})
+\item 
+void \hyperlink{_ra_r_g_u_i_8cpp_affed9b07decbe441aa383c2679a21013}{update\+View} ()
+\item 
+void \hyperlink{_ra_r_g_u_i_8cpp_a8250803b56d09ec43f3e8e3a72ee4426}{rent\+Callback} (Fl\+\_\+\+Widget $\ast$widget, void $\ast$v)
+\item 
+void \hyperlink{_ra_r_g_u_i_8cpp_a51199e6bdbd4a45769bdb55b2b6d5793}{customer\+Callback} (Fl\+\_\+\+Widget $\ast$widget, void $\ast$v)
+\item 
+void \hyperlink{_ra_r_g_u_i_8cpp_ab923c43f194fd1d3fd90e9e6bf77c38d}{return\+Callback} (Fl\+\_\+\+Widget $\ast$widget, void $\ast$v)
+\item 
+void \hyperlink{_ra_r_g_u_i_8cpp_af6a3fad28ecdc588548accdb82aabeab}{return\+Problem\+Callback} (Fl\+\_\+\+Widget $\ast$widget, void $\ast$v)
+\item 
+void \hyperlink{_ra_r_g_u_i_8cpp_abefdd5def5ab2eb6c2fc8b107086c795}{detail\+Callback} (Fl\+\_\+\+Widget $\ast$widget, void $\ast$v)
+\item 
+void \hyperlink{_ra_r_g_u_i_8cpp_a6b3f746d9b84f9665a803f1cec0c0f8a}{repair\+Callback} (Fl\+\_\+\+Widget $\ast$widget, void $\ast$v)
+\item 
+void \hyperlink{_ra_r_g_u_i_8cpp_aac755d490d9cc582697e254eef7a33cc}{add\+Veh\+Callback} (Fl\+\_\+\+Widget $\ast$widget, void $\ast$v)
+\item 
+void \hyperlink{_ra_r_g_u_i_8cpp_a16b08c0f6f8035f431da0f6bc33f7993}{search\+Name\+Callback} (Fl\+\_\+\+Widget $\ast$widget, void $\ast$v)
+\item 
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{_ra_r_g_u_i_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+int {\bfseries main} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_rental_manager}{Rental\+Manager} \hyperlink{_ra_r_g_u_i_8cpp_abded586844df7309c6019301aeebf12d}{manager}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+I\+T\+CS 3112 Rent-\/\+A-\/\+Ride Final Project. 
+
+\begin{DoxyAuthor}{Author}
+John Poulos, jpoulos2 
+
+Mohammad Salad 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+Oct 16, 2017
+\end{DoxyDate}
+\hypertarget{vehicle_8h_DESCRIPTION}{}\subsection{D\+E\+S\+C\+R\+I\+P\+T\+I\+ON}\label{vehicle_8h_DESCRIPTION}
+Header file for the \hyperlink{class_truck}{Truck} object. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_aac755d490d9cc582697e254eef7a33cc}\label{_ra_r_g_u_i_8cpp_aac755d490d9cc582697e254eef7a33cc}} 
+\index{Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}!add\+Veh\+Callback@{add\+Veh\+Callback}}
+\index{add\+Veh\+Callback@{add\+Veh\+Callback}!Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}}
+\subsubsection{\texorpdfstring{add\+Veh\+Callback()}{addVehCallback()}}
+{\footnotesize\ttfamily void add\+Veh\+Callback (\begin{DoxyParamCaption}\item[{Fl\+\_\+\+Widget $\ast$}]{widget,  }\item[{void $\ast$}]{v }\end{DoxyParamCaption})}
+
+add\+Vehicle callback that will add a new vehicle to the list
+
+
+\begin{DoxyParams}{Parameters}
+{\em widget,the} & widget to be editted as a result of clicking \\
+\hline
+{\em v} & pointer to the button being clicked \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_ab07c2f2b9a395e63eec3e3c0fae7c0a8}\label{_ra_r_g_u_i_8cpp_ab07c2f2b9a395e63eec3e3c0fae7c0a8}} 
+\index{Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}!avail@{avail}}
+\index{avail@{avail}!Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}}
+\subsubsection{\texorpdfstring{avail()}{avail()}}
+{\footnotesize\ttfamily Fl\+\_\+\+Hold\+\_\+\+Browser avail (\begin{DoxyParamCaption}\item[{280}]{,  }\item[{80}]{,  }\item[{225}]{,  }\item[{200}]{,  }\item[{\char`\"{}Available Vehicles\char`\"{}}]{ }\end{DoxyParamCaption})}
+
+Creating a listview for the available vehicles \mbox{\Hypertarget{_ra_r_g_u_i_8cpp_a51199e6bdbd4a45769bdb55b2b6d5793}\label{_ra_r_g_u_i_8cpp_a51199e6bdbd4a45769bdb55b2b6d5793}} 
+\index{Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}!customer\+Callback@{customer\+Callback}}
+\index{customer\+Callback@{customer\+Callback}!Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}}
+\subsubsection{\texorpdfstring{customer\+Callback()}{customerCallback()}}
+{\footnotesize\ttfamily void customer\+Callback (\begin{DoxyParamCaption}\item[{Fl\+\_\+\+Widget $\ast$}]{widget,  }\item[{void $\ast$}]{v }\end{DoxyParamCaption})}
+
+\hyperlink{class_customer}{Customer} callback that will add a new customer to the browser
+
+
+\begin{DoxyParams}{Parameters}
+{\em widget,the} & widget to be editted as a result of clicking \\
+\hline
+{\em v} & pointer to the button being clicked \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_aa3c4a2d1a0d5026bc0d74a8e9ed4a2c3}\label{_ra_r_g_u_i_8cpp_aa3c4a2d1a0d5026bc0d74a8e9ed4a2c3}} 
+\index{Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}!customer\+View@{customer\+View}}
+\index{customer\+View@{customer\+View}!Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}}
+\subsubsection{\texorpdfstring{customer\+View()}{customerView()}}
+{\footnotesize\ttfamily Fl\+\_\+\+Hold\+\_\+\+Browser customer\+View (\begin{DoxyParamCaption}\item[{40}]{,  }\item[{80}]{,  }\item[{200}]{,  }\item[{200}]{,  }\item[{\char`\"{}Customers\char`\"{}}]{ }\end{DoxyParamCaption})}
+
+Creating a listview for the customers \mbox{\Hypertarget{_ra_r_g_u_i_8cpp_a1d5c803b3f82157eb10d9e3b39b45fed}\label{_ra_r_g_u_i_8cpp_a1d5c803b3f82157eb10d9e3b39b45fed}} 
+\index{Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}!detail@{detail}}
+\index{detail@{detail}!Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}}
+\subsubsection{\texorpdfstring{detail()}{detail()}}
+{\footnotesize\ttfamily Fl\+\_\+\+Hold\+\_\+\+Browser detail (\begin{DoxyParamCaption}\item[{855}]{,  }\item[{80}]{,  }\item[{240}]{,  }\item[{200}]{,  }\item[{\char`\"{}Out for detail\char`\"{}}]{ }\end{DoxyParamCaption})}
+
+Creating a listview for the cars out for detail \mbox{\Hypertarget{_ra_r_g_u_i_8cpp_abefdd5def5ab2eb6c2fc8b107086c795}\label{_ra_r_g_u_i_8cpp_abefdd5def5ab2eb6c2fc8b107086c795}} 
+\index{Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}!detail\+Callback@{detail\+Callback}}
+\index{detail\+Callback@{detail\+Callback}!Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}}
+\subsubsection{\texorpdfstring{detail\+Callback()}{detailCallback()}}
+{\footnotesize\ttfamily void detail\+Callback (\begin{DoxyParamCaption}\item[{Fl\+\_\+\+Widget $\ast$}]{widget,  }\item[{void $\ast$}]{v }\end{DoxyParamCaption})}
+
+Detail callback that will shift the selected vehicle from detail to available
+
+
+\begin{DoxyParams}{Parameters}
+{\em widget,the} & widget to be editted as a result of clicking \\
+\hline
+{\em v} & pointer to the button being clicked \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_a74ccc960aca210a58a3e86b2e6dc75d8}\label{_ra_r_g_u_i_8cpp_a74ccc960aca210a58a3e86b2e6dc75d8}} 
+\index{Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}!rent@{rent}}
+\index{rent@{rent}!Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}}
+\subsubsection{\texorpdfstring{rent()}{rent()}}
+{\footnotesize\ttfamily Fl\+\_\+\+Hold\+\_\+\+Browser rent (\begin{DoxyParamCaption}\item[{545}]{,  }\item[{80}]{,  }\item[{270}]{,  }\item[{200}]{,  }\item[{\char`\"{}Rent\char`\"{}}]{ }\end{DoxyParamCaption})}
+
+Creating a listview for the cars out for rent \mbox{\Hypertarget{_ra_r_g_u_i_8cpp_a8250803b56d09ec43f3e8e3a72ee4426}\label{_ra_r_g_u_i_8cpp_a8250803b56d09ec43f3e8e3a72ee4426}} 
+\index{Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}!rent\+Callback@{rent\+Callback}}
+\index{rent\+Callback@{rent\+Callback}!Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}}
+\subsubsection{\texorpdfstring{rent\+Callback()}{rentCallback()}}
+{\footnotesize\ttfamily void rent\+Callback (\begin{DoxyParamCaption}\item[{Fl\+\_\+\+Widget $\ast$}]{widget,  }\item[{void $\ast$}]{v }\end{DoxyParamCaption})}
+
+Rental callback that will shift the selected vehicle from available to rented under customer
+
+
+\begin{DoxyParams}{Parameters}
+{\em widget,the} & widget to be editted as a result of clicking \\
+\hline
+{\em v} & pointer to the button being clicked \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_a28f722a1c103719a068d6b34b7ecec5e}\label{_ra_r_g_u_i_8cpp_a28f722a1c103719a068d6b34b7ecec5e}} 
+\index{Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}!repair@{repair}}
+\index{repair@{repair}!Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}}
+\subsubsection{\texorpdfstring{repair()}{repair()}}
+{\footnotesize\ttfamily Fl\+\_\+\+Hold\+\_\+\+Browser repair (\begin{DoxyParamCaption}\item[{1135}]{,  }\item[{80}]{,  }\item[{240}]{,  }\item[{200}]{,  }\item[{\char`\"{}Out for repair\char`\"{}}]{ }\end{DoxyParamCaption})}
+
+Creating a listview for the cars out for repair \mbox{\Hypertarget{_ra_r_g_u_i_8cpp_a6b3f746d9b84f9665a803f1cec0c0f8a}\label{_ra_r_g_u_i_8cpp_a6b3f746d9b84f9665a803f1cec0c0f8a}} 
+\index{Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}!repair\+Callback@{repair\+Callback}}
+\index{repair\+Callback@{repair\+Callback}!Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}}
+\subsubsection{\texorpdfstring{repair\+Callback()}{repairCallback()}}
+{\footnotesize\ttfamily void repair\+Callback (\begin{DoxyParamCaption}\item[{Fl\+\_\+\+Widget $\ast$}]{widget,  }\item[{void $\ast$}]{v }\end{DoxyParamCaption})}
+
+Repair callback that will shift the selected vehicle from repair to available
+
+
+\begin{DoxyParams}{Parameters}
+{\em widget,the} & widget to be editted as a result of clicking \\
+\hline
+{\em v} & pointer to the button being clicked \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_ab923c43f194fd1d3fd90e9e6bf77c38d}\label{_ra_r_g_u_i_8cpp_ab923c43f194fd1d3fd90e9e6bf77c38d}} 
+\index{Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}!return\+Callback@{return\+Callback}}
+\index{return\+Callback@{return\+Callback}!Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}}
+\subsubsection{\texorpdfstring{return\+Callback()}{returnCallback()}}
+{\footnotesize\ttfamily void return\+Callback (\begin{DoxyParamCaption}\item[{Fl\+\_\+\+Widget $\ast$}]{widget,  }\item[{void $\ast$}]{v }\end{DoxyParamCaption})}
+
+Return callback that will return a vehicle to the out for detail shop
+
+
+\begin{DoxyParams}{Parameters}
+{\em widget,the} & widget to be editted as a result of clicking \\
+\hline
+{\em v} & pointer to the button being clicked \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_af6a3fad28ecdc588548accdb82aabeab}\label{_ra_r_g_u_i_8cpp_af6a3fad28ecdc588548accdb82aabeab}} 
+\index{Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}!return\+Problem\+Callback@{return\+Problem\+Callback}}
+\index{return\+Problem\+Callback@{return\+Problem\+Callback}!Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}}
+\subsubsection{\texorpdfstring{return\+Problem\+Callback()}{returnProblemCallback()}}
+{\footnotesize\ttfamily void return\+Problem\+Callback (\begin{DoxyParamCaption}\item[{Fl\+\_\+\+Widget $\ast$}]{widget,  }\item[{void $\ast$}]{v }\end{DoxyParamCaption})}
+
+Return callback that will shift the selected vehicle from available to out under repair
+
+
+\begin{DoxyParams}{Parameters}
+{\em widget,the} & widget to be editted as a result of clicking \\
+\hline
+{\em v} & pointer to the button being clicked \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_a16b08c0f6f8035f431da0f6bc33f7993}\label{_ra_r_g_u_i_8cpp_a16b08c0f6f8035f431da0f6bc33f7993}} 
+\index{Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}!search\+Name\+Callback@{search\+Name\+Callback}}
+\index{search\+Name\+Callback@{search\+Name\+Callback}!Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}}
+\subsubsection{\texorpdfstring{search\+Name\+Callback()}{searchNameCallback()}}
+{\footnotesize\ttfamily void search\+Name\+Callback (\begin{DoxyParamCaption}\item[{Fl\+\_\+\+Widget $\ast$}]{widget,  }\item[{void $\ast$}]{v }\end{DoxyParamCaption})}
+
+Search callback that will shift the selected vehicle from available to rented under customer
+
+
+\begin{DoxyParams}{Parameters}
+{\em widget,the} & widget to be editted as a result of clicking \\
+\hline
+{\em v} & pointer to the button being clicked \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_affed9b07decbe441aa383c2679a21013}\label{_ra_r_g_u_i_8cpp_affed9b07decbe441aa383c2679a21013}} 
+\index{Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}!update\+View@{update\+View}}
+\index{update\+View@{update\+View}!Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}}
+\subsubsection{\texorpdfstring{update\+View()}{updateView()}}
+{\footnotesize\ttfamily void update\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This function will handle updating all listview contents 
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_a33b64c7cf3f1bc66abe4eaafea28726e}\label{_ra_r_g_u_i_8cpp_a33b64c7cf3f1bc66abe4eaafea28726e}} 
+\index{Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}!win@{win}}
+\index{win@{win}!Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}}
+\subsubsection{\texorpdfstring{win()}{win()}}
+{\footnotesize\ttfamily Fl\+\_\+\+Double\+\_\+\+Window win (\begin{DoxyParamCaption}\item[{1500}]{,  }\item[{700}]{,  }\item[{\char`\"{}Rent-\/A-\/Ride\char`\"{}}]{ }\end{DoxyParamCaption})}
+
+Creating the main window 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_ra_r_g_u_i_8cpp_abded586844df7309c6019301aeebf12d}\label{_ra_r_g_u_i_8cpp_abded586844df7309c6019301aeebf12d}} 
+\index{Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}!manager@{manager}}
+\index{manager@{manager}!Ra\+R\+G\+U\+I.\+cpp@{Ra\+R\+G\+U\+I.\+cpp}}
+\subsubsection{\texorpdfstring{manager}{manager}}
+{\footnotesize\ttfamily \hyperlink{class_rental_manager}{Rental\+Manager} manager}
+
+\hyperlink{class_rental_manager}{Rental\+Manager} instance 

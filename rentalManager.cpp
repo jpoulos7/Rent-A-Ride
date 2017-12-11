@@ -1,3 +1,19 @@
+/**
+ *
+ * @file rentalManager.cpp
+ * @author John Poulos, jpoulos2
+ * @author Mohammad Salad
+ * @author Charles Valdez
+ * @date Oct 16, 2017
+ *
+ * @brief ITCS 3112 Rent-A-Ride Final Project
+ *
+ * @section DESCRIPTION
+ *
+ * Implementation file for rentalManager
+ *
+ */
+
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -11,15 +27,27 @@
 
 using namespace std;
 
+/**
+ *Default Constructor
+ */
 RentalManager::RentalManager(){
     idCount = 0;
 }
 
+/**
+ *Constructor accepts filename containing vehicles and customers.
+ */
 RentalManager::RentalManager(string vehicles, string customers){
     importVehicles(vehicles);
     importCustomers(customers);
 }
 
+/**
+ * Reads vehicles from a file and imports them into the program.
+ *
+ * @param filename Filename containing vehicles
+ * @return none
+ */
 void RentalManager::importVehicles(string filename) {
     ifstream file(filename);
     string linebuffer, token;
@@ -51,6 +79,12 @@ void RentalManager::importVehicles(string filename) {
     }
 }
 
+/**
+ * Reads customers from a file and imports them into the program.
+ *
+ * @param filename Filename containing customers
+ * @return none
+ */
 void RentalManager::importCustomers(string filename) {
     ifstream file(filename);
     string linebuffer, token;
@@ -70,6 +104,12 @@ void RentalManager::importCustomers(string filename) {
     }
 }
 
+/**
+ * Adds a customer to the list of customers.
+ *
+ * @param Customer Customer to be added to the list
+ * @return none
+ */
 void RentalManager::addCustomer(Customer c) {
     if (c.getCustomerID() == -1){
         c.setCustomerID(idCount);
@@ -78,10 +118,22 @@ void RentalManager::addCustomer(Customer c) {
     customers.push_back(c);
 }
 
+/**
+ * Returns a vector list containing all the customers in the list.
+ *
+ * @param none
+ * @return customers vector
+ */
 vector<Customer> RentalManager::getAllCustomers() {
     return customers;
 }
 
+/**
+ * Adds a vehicle to the appropriate vector list.
+ *
+ * @param v Vehicle to be added
+ * @return none
+ */
 void RentalManager::addVehicle(Vehicle v) {
     if (v.getStatus() == -1) {
         available.push_back(v);
@@ -97,26 +149,64 @@ void RentalManager::addVehicle(Vehicle v) {
     }
 }
 
+/**
+ * Returns a vector list containing all the vehicles in the database.
+ *
+ * @param none
+ * @return vector of all vehicles
+ */
 vector<Vehicle> RentalManager::getAllVehicles() {
     return allVehicles;
 }
 
+/**
+ * Returns a vector list containing all the available vehicles in the database.
+ *
+ * @param none
+ * @return vector of all available vehicles
+ */
 vector<Vehicle> RentalManager::getAvailable() {
     return available;
 }
 
+/**
+ * Returns a vector list containing all the rented vehicles in the database.
+ *
+ * @param none
+ * @return vector of all rented vehicles
+ */
 vector<Vehicle> RentalManager::getRented() {
     return rented;
 }
 
+/**
+ * Returns a vector list containing all the vehicles in the detail shop.
+ *
+ * @param none
+ * @return vector of all vehicles in detail shop
+ */
 vector<Vehicle> RentalManager::getDetail() {
     return detailShop;
 }
 
+/**
+ * Returns a vector list containing all the vehicles in the repair shop.
+ *
+ * @param none
+ * @return vector of all vehicles in the repair shop
+ */
 vector<Vehicle> RentalManager::getRepair() {
     return repairShop;
 }
 
+/**
+ * Takes a vehicle and assigns a customer to that vehicle. Also changes
+ * the status of the vehicle to rented and moves it to the list of rented vehicles.
+ *
+ * @param v Vehicle to be rented
+ * @param c Customer renting the vehicle
+ * @return none
+ */
 void RentalManager::rentVehicle(Vehicle *v, Customer *c) {
     for (int i = 0; i < available.size(); i++){
         if (available[i].toString() == v->toString()){
@@ -129,6 +219,13 @@ void RentalManager::rentVehicle(Vehicle *v, Customer *c) {
     }
 }
 
+/**
+ * Returns a rented vehicle. Changes the status to needs detailing and removes the customer id.
+ * Also puts the vehicle in the detail queue.
+ *
+ * @param v Vehicle to be returned
+ * @return none
+ */
 void RentalManager::returnVehicle(Vehicle v) {
     for (int i = 0; i < rented.size(); i++){
         if (rented[i].toStringRented() == v.toStringRented()){
@@ -142,6 +239,13 @@ void RentalManager::returnVehicle(Vehicle v) {
 
 }
 
+/**
+ * Returns a rented vehicle that has problems. Changes the status to need repair and removes the customer id.
+ * Also puts the vehicle in the repair queue.
+ *
+ * @param v Vehicle to be returned with problems
+ * @return none
+ */
 void RentalManager::returnVehicleProblems(Vehicle v) {
     for (int i = 0; i < rented.size(); i++){
         if (rented[i].toStringRented() == v.toStringRented()){
@@ -154,7 +258,12 @@ void RentalManager::returnVehicleProblems(Vehicle v) {
     }
 }
 
-
+/**
+ * Repairs a given vehicle. Moves the vehicle into the detail queue and changes the status to needs detailing.
+ *
+ * @param v Vehicle that is being repaired
+ * @return none
+ */
 void RentalManager::repairVehicle(Vehicle v) {
     for (int i = 0; i < repairShop.size(); i++){
         if (repairShop[i].toString() == v.toString()){
@@ -166,6 +275,12 @@ void RentalManager::repairVehicle(Vehicle v) {
     }
 }
 
+/**
+ * Details a given vehicle. Moves the vehicle into the available queue and changes the status to available.
+ *
+ * @param v Vehicle that is being detailed
+ * @return none
+ */
 void RentalManager::detailVehicle(Vehicle v) {
     for (int i = 0; i < detailShop.size(); i++){
         if (detailShop[i].toString() == v.toString()){
@@ -177,6 +292,12 @@ void RentalManager::detailVehicle(Vehicle v) {
     }
 }
 
+/**
+ * Searches the list of rented vehicles looking for all vehicles rented by a particular customer.
+ *
+ * @param token String that is being searched for (customer firstname, lastname or id)
+ * @return none
+ */
 void RentalManager::searchName(string token) {
     //vector<Customer> found;
     found.clear();
@@ -194,60 +315,12 @@ void RentalManager::searchName(string token) {
     }
 }
 
+/**
+ * Returns the vector containing all the vehicles found during the search query.
+ *
+ * @param none
+ * @return vector containing all vehicles belonging to the specific user
+ */
 vector<Vehicle> RentalManager::getFound(){
     return found;
 }
-
-//int main(int argc, char* argv[]) {
-
-//RentalManager manager;
-//Customer cust("John", "Poulos", 150);
-//    Customer cust1("John", "Poulos", 1);
-//    Customer cust2("John", "Poulos", 2);
-//
-//    manager.addCustomer(cust);
-//    manager.addCustomer(cust1);
-//    manager.addCustomer(cust2);
-//
-//    cout << manager.getAllCustomers();
-//
-//    Car car1("Toyota", "Camry", 2016, "Blue", 4, -1, -1, "C");
-//Car car2("Toyota", "prius", 2017, "Blue", 4, -1, -1, "C");
-//    Car car3("Toyota", "4runner", 2018, "Blue", 4, -1, 1, "C");
-//    Car car4("Toyota", "lol", 2019, "Blue", 4, -1, 2, "C");
-//
-//    manager.addVehicle(car1);
-//    manager.addVehicle(car2);
-//    manager.addVehicle(car3);
-//    manager.addVehicle(car4);
-//
-//
-//    manager.addVehicle(car1);
-//    manager.addVehicle(car2);
-//    manager.addVehicle(car3);
-//    manager.addVehicle(car4);
-
-//manager.importVehicles("dataset/all_out.csv");
-//    cout << "AVAILABLE: \n" << manager.getAvailable() << endl;
-//    manager.importCustomers("dataset/customers.csv");
-//    cout << "CUSTOMERS: \n" << manager.getAllCustomers() << endl;
-//manager.addVehicle(car2);
-//cout << manager.getAllVehicles() << endl;
-
-
-//cout << "RENTED\n" << manager.getRented() << endl;
-
-//manager.rentVehicle(&car2,&cust);
-
-//cout << "AVAILABLE: \n" << manager.getAvailable() << endl;
-//cout << "RENTED\n" << manager.getRented() << endl;
-
-//car2.setCustomerID(431424);
-//car2.setStatus(100000);
-
-//cout << "RENTED\n" << manager.getRented() << endl;
-//cout << manager.getAllVehicles() << endl;
-
-//cout << manager.getDetail() << endl;
-//cout << manager.getRepair() << endl;
-//}

@@ -23,7 +23,6 @@
 class RentalManager {
 private:
 
-    //std::unordered_set<Car> available;
     std::vector<Vehicle> allVehicles;
     std::vector<Vehicle> available;
     std::vector<Vehicle> rented;
@@ -62,9 +61,7 @@ public:
     void detailVehicle(Vehicle v);
 
     void searchName(string token);
-
-
-
+    
 };
 
 #endif

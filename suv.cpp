@@ -20,11 +20,21 @@
 
 using namespace std;
 
+/**
+ * SUV class constructor.
+ **/
 SUV::SUV(){
-    
+
 }
 
+/**
+ * SUV class constructor takes in several parameters that apply to a SUV object.
+ **/
 SUV::SUV(string make, string model, int year, string color, int numWheels, int customerID, int status, string type) :  Vehicle(make, model, year, color, numWheels, customerID, status, type) { }
-SUV::~SUV(){
 
+/**
+ * Destructor
+ **/
+SUV::~SUV(){
+    
 }

@@ -51,16 +51,16 @@ public:
     void setColor(string color);
     string getColor();
     void setNumWheels(int numWheels);
-	int getNumWheels();
+    int getNumWheels();
     void setCustomerID(int customerID);
-	int getCustomerID();
+    int getCustomerID();
     void setStatus(int status);
     int getStatus();
     void setType(string type);
     string getType();
     string toString();
     string toStringRented();
-
+    
 };
 
 #endif

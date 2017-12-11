@@ -1,0 +1,341 @@
+\hypertarget{class_rental_manager}{}\section{Rental\+Manager Class Reference}
+\label{class_rental_manager}\index{Rental\+Manager@{Rental\+Manager}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_rental_manager_a2e8eabdde863514dd4ca13a5e3a4e533}{Rental\+Manager} ()
+\item 
+\hyperlink{class_rental_manager_a0c8562369e957400e17bd176ee18c91f}{Rental\+Manager} (string vehicles, string customers)
+\item 
+void \hyperlink{class_rental_manager_a4c4b5e823b02baccd591f91448d7b1d7}{import\+Vehicles} (string filename)
+\item 
+void \hyperlink{class_rental_manager_a1a1f994736ce9ccb3d3ceef5cfdd255e}{import\+Customers} (string filename)
+\item 
+void \hyperlink{class_rental_manager_a7f78be10cb46d3737775d6610c517d71}{add\+Customer} (\hyperlink{class_customer}{Customer} c)
+\item 
+vector$<$ \hyperlink{class_customer}{Customer} $>$ \hyperlink{class_rental_manager_a86ea87b26b3617dffff621c88066d4f1}{get\+All\+Customers} ()
+\item 
+void \hyperlink{class_rental_manager_a4363860fad4cfdd5ab189667e2dfc3d4}{add\+Vehicle} (\hyperlink{class_vehicle}{Vehicle} v)
+\item 
+vector$<$ \hyperlink{class_vehicle}{Vehicle} $>$ \hyperlink{class_rental_manager_a4b719aa2506aafc07656fc1c45c94aca}{get\+All\+Vehicles} ()
+\item 
+vector$<$ \hyperlink{class_vehicle}{Vehicle} $>$ \hyperlink{class_rental_manager_adf8270be0e9980c4cee3deb484392e15}{get\+Available} ()
+\item 
+vector$<$ \hyperlink{class_vehicle}{Vehicle} $>$ \hyperlink{class_rental_manager_af1d5c4eb5b893fbec7c87610a11b6da4}{get\+Rented} ()
+\item 
+vector$<$ \hyperlink{class_vehicle}{Vehicle} $>$ \hyperlink{class_rental_manager_a9fb595d425dc7d770b1a506be4895fd2}{get\+Detail} ()
+\item 
+vector$<$ \hyperlink{class_vehicle}{Vehicle} $>$ \hyperlink{class_rental_manager_a7aeec650157e516c093df63fdb49c971}{get\+Repair} ()
+\item 
+vector$<$ \hyperlink{class_vehicle}{Vehicle} $>$ \hyperlink{class_rental_manager_ad6c19e6ea5a6d78fe010fe4ec577e4e5}{get\+Found} ()
+\item 
+void \hyperlink{class_rental_manager_ac0d7830b092f29aa063deba6ff422f24}{rent\+Vehicle} (\hyperlink{class_vehicle}{Vehicle} $\ast$v, \hyperlink{class_customer}{Customer} $\ast$c)
+\item 
+void \hyperlink{class_rental_manager_a372dc4e901586e4e40e697df8c990faa}{return\+Vehicle} (\hyperlink{class_vehicle}{Vehicle} v)
+\item 
+void \hyperlink{class_rental_manager_afcb0495ecb6cca4d239a14ded559bb0a}{return\+Vehicle\+Problems} (\hyperlink{class_vehicle}{Vehicle} v)
+\item 
+void \hyperlink{class_rental_manager_a17e836a98a2d3b0c9296dd92c9f86d19}{repair\+Vehicle} (\hyperlink{class_vehicle}{Vehicle} v)
+\item 
+void \hyperlink{class_rental_manager_a9854197a07ec70ee5300f9f1d6f96996}{detail\+Vehicle} (\hyperlink{class_vehicle}{Vehicle} v)
+\item 
+void \hyperlink{class_rental_manager_af54e7a73a0419847843bb90b81cf09ff}{search\+Name} (string token)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_rental_manager_a2e8eabdde863514dd4ca13a5e3a4e533}\label{class_rental_manager_a2e8eabdde863514dd4ca13a5e3a4e533}} 
+\index{Rental\+Manager@{Rental\+Manager}!Rental\+Manager@{Rental\+Manager}}
+\index{Rental\+Manager@{Rental\+Manager}!Rental\+Manager@{Rental\+Manager}}
+\subsubsection{\texorpdfstring{Rental\+Manager()}{RentalManager()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Rental\+Manager\+::\+Rental\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Default Constructor \mbox{\Hypertarget{class_rental_manager_a0c8562369e957400e17bd176ee18c91f}\label{class_rental_manager_a0c8562369e957400e17bd176ee18c91f}} 
+\index{Rental\+Manager@{Rental\+Manager}!Rental\+Manager@{Rental\+Manager}}
+\index{Rental\+Manager@{Rental\+Manager}!Rental\+Manager@{Rental\+Manager}}
+\subsubsection{\texorpdfstring{Rental\+Manager()}{RentalManager()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Rental\+Manager\+::\+Rental\+Manager (\begin{DoxyParamCaption}\item[{string}]{vehicles,  }\item[{string}]{customers }\end{DoxyParamCaption})}
+
+Constructor accepts filename containing vehicles and customers. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_rental_manager_a7f78be10cb46d3737775d6610c517d71}\label{class_rental_manager_a7f78be10cb46d3737775d6610c517d71}} 
+\index{Rental\+Manager@{Rental\+Manager}!add\+Customer@{add\+Customer}}
+\index{add\+Customer@{add\+Customer}!Rental\+Manager@{Rental\+Manager}}
+\subsubsection{\texorpdfstring{add\+Customer()}{addCustomer()}}
+{\footnotesize\ttfamily void Rental\+Manager\+::add\+Customer (\begin{DoxyParamCaption}\item[{\hyperlink{class_customer}{Customer}}]{c }\end{DoxyParamCaption})}
+
+Adds a customer to the list of customers.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{class_customer}{Customer}} & \hyperlink{class_customer}{Customer} to be added to the list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_rental_manager_a4363860fad4cfdd5ab189667e2dfc3d4}\label{class_rental_manager_a4363860fad4cfdd5ab189667e2dfc3d4}} 
+\index{Rental\+Manager@{Rental\+Manager}!add\+Vehicle@{add\+Vehicle}}
+\index{add\+Vehicle@{add\+Vehicle}!Rental\+Manager@{Rental\+Manager}}
+\subsubsection{\texorpdfstring{add\+Vehicle()}{addVehicle()}}
+{\footnotesize\ttfamily void Rental\+Manager\+::add\+Vehicle (\begin{DoxyParamCaption}\item[{\hyperlink{class_vehicle}{Vehicle}}]{v }\end{DoxyParamCaption})}
+
+Adds a vehicle to the appropriate vector list.
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_vehicle}{Vehicle} to be added \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_rental_manager_a9854197a07ec70ee5300f9f1d6f96996}\label{class_rental_manager_a9854197a07ec70ee5300f9f1d6f96996}} 
+\index{Rental\+Manager@{Rental\+Manager}!detail\+Vehicle@{detail\+Vehicle}}
+\index{detail\+Vehicle@{detail\+Vehicle}!Rental\+Manager@{Rental\+Manager}}
+\subsubsection{\texorpdfstring{detail\+Vehicle()}{detailVehicle()}}
+{\footnotesize\ttfamily void Rental\+Manager\+::detail\+Vehicle (\begin{DoxyParamCaption}\item[{\hyperlink{class_vehicle}{Vehicle}}]{v }\end{DoxyParamCaption})}
+
+Details a given vehicle. Moves the vehicle into the available queue and changes the status to available.
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_vehicle}{Vehicle} that is being detailed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_rental_manager_a86ea87b26b3617dffff621c88066d4f1}\label{class_rental_manager_a86ea87b26b3617dffff621c88066d4f1}} 
+\index{Rental\+Manager@{Rental\+Manager}!get\+All\+Customers@{get\+All\+Customers}}
+\index{get\+All\+Customers@{get\+All\+Customers}!Rental\+Manager@{Rental\+Manager}}
+\subsubsection{\texorpdfstring{get\+All\+Customers()}{getAllCustomers()}}
+{\footnotesize\ttfamily vector$<$ \hyperlink{class_customer}{Customer} $>$ Rental\+Manager\+::get\+All\+Customers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns a vector list containing all the customers in the list.
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+customers vector 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_rental_manager_a4b719aa2506aafc07656fc1c45c94aca}\label{class_rental_manager_a4b719aa2506aafc07656fc1c45c94aca}} 
+\index{Rental\+Manager@{Rental\+Manager}!get\+All\+Vehicles@{get\+All\+Vehicles}}
+\index{get\+All\+Vehicles@{get\+All\+Vehicles}!Rental\+Manager@{Rental\+Manager}}
+\subsubsection{\texorpdfstring{get\+All\+Vehicles()}{getAllVehicles()}}
+{\footnotesize\ttfamily vector$<$ \hyperlink{class_vehicle}{Vehicle} $>$ Rental\+Manager\+::get\+All\+Vehicles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns a vector list containing all the vehicles in the database.
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector of all vehicles 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_rental_manager_adf8270be0e9980c4cee3deb484392e15}\label{class_rental_manager_adf8270be0e9980c4cee3deb484392e15}} 
+\index{Rental\+Manager@{Rental\+Manager}!get\+Available@{get\+Available}}
+\index{get\+Available@{get\+Available}!Rental\+Manager@{Rental\+Manager}}
+\subsubsection{\texorpdfstring{get\+Available()}{getAvailable()}}
+{\footnotesize\ttfamily vector$<$ \hyperlink{class_vehicle}{Vehicle} $>$ Rental\+Manager\+::get\+Available (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns a vector list containing all the available vehicles in the database.
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector of all available vehicles 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_rental_manager_a9fb595d425dc7d770b1a506be4895fd2}\label{class_rental_manager_a9fb595d425dc7d770b1a506be4895fd2}} 
+\index{Rental\+Manager@{Rental\+Manager}!get\+Detail@{get\+Detail}}
+\index{get\+Detail@{get\+Detail}!Rental\+Manager@{Rental\+Manager}}
+\subsubsection{\texorpdfstring{get\+Detail()}{getDetail()}}
+{\footnotesize\ttfamily vector$<$ \hyperlink{class_vehicle}{Vehicle} $>$ Rental\+Manager\+::get\+Detail (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns a vector list containing all the vehicles in the detail shop.
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector of all vehicles in detail shop 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_rental_manager_ad6c19e6ea5a6d78fe010fe4ec577e4e5}\label{class_rental_manager_ad6c19e6ea5a6d78fe010fe4ec577e4e5}} 
+\index{Rental\+Manager@{Rental\+Manager}!get\+Found@{get\+Found}}
+\index{get\+Found@{get\+Found}!Rental\+Manager@{Rental\+Manager}}
+\subsubsection{\texorpdfstring{get\+Found()}{getFound()}}
+{\footnotesize\ttfamily vector$<$ \hyperlink{class_vehicle}{Vehicle} $>$ Rental\+Manager\+::get\+Found (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns the vector containing all the vehicles found during the search query.
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector containing all vehicles belonging to the specific user 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_rental_manager_af1d5c4eb5b893fbec7c87610a11b6da4}\label{class_rental_manager_af1d5c4eb5b893fbec7c87610a11b6da4}} 
+\index{Rental\+Manager@{Rental\+Manager}!get\+Rented@{get\+Rented}}
+\index{get\+Rented@{get\+Rented}!Rental\+Manager@{Rental\+Manager}}
+\subsubsection{\texorpdfstring{get\+Rented()}{getRented()}}
+{\footnotesize\ttfamily vector$<$ \hyperlink{class_vehicle}{Vehicle} $>$ Rental\+Manager\+::get\+Rented (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns a vector list containing all the rented vehicles in the database.
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector of all rented vehicles 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_rental_manager_a7aeec650157e516c093df63fdb49c971}\label{class_rental_manager_a7aeec650157e516c093df63fdb49c971}} 
+\index{Rental\+Manager@{Rental\+Manager}!get\+Repair@{get\+Repair}}
+\index{get\+Repair@{get\+Repair}!Rental\+Manager@{Rental\+Manager}}
+\subsubsection{\texorpdfstring{get\+Repair()}{getRepair()}}
+{\footnotesize\ttfamily vector$<$ \hyperlink{class_vehicle}{Vehicle} $>$ Rental\+Manager\+::get\+Repair (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns a vector list containing all the vehicles in the repair shop.
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector of all vehicles in the repair shop 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_rental_manager_a1a1f994736ce9ccb3d3ceef5cfdd255e}\label{class_rental_manager_a1a1f994736ce9ccb3d3ceef5cfdd255e}} 
+\index{Rental\+Manager@{Rental\+Manager}!import\+Customers@{import\+Customers}}
+\index{import\+Customers@{import\+Customers}!Rental\+Manager@{Rental\+Manager}}
+\subsubsection{\texorpdfstring{import\+Customers()}{importCustomers()}}
+{\footnotesize\ttfamily void Rental\+Manager\+::import\+Customers (\begin{DoxyParamCaption}\item[{string}]{filename }\end{DoxyParamCaption})}
+
+Reads customers from a file and imports them into the program.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Filename containing customers \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_rental_manager_a4c4b5e823b02baccd591f91448d7b1d7}\label{class_rental_manager_a4c4b5e823b02baccd591f91448d7b1d7}} 
+\index{Rental\+Manager@{Rental\+Manager}!import\+Vehicles@{import\+Vehicles}}
+\index{import\+Vehicles@{import\+Vehicles}!Rental\+Manager@{Rental\+Manager}}
+\subsubsection{\texorpdfstring{import\+Vehicles()}{importVehicles()}}
+{\footnotesize\ttfamily void Rental\+Manager\+::import\+Vehicles (\begin{DoxyParamCaption}\item[{string}]{filename }\end{DoxyParamCaption})}
+
+Reads vehicles from a file and imports them into the program.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Filename containing vehicles \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_rental_manager_ac0d7830b092f29aa063deba6ff422f24}\label{class_rental_manager_ac0d7830b092f29aa063deba6ff422f24}} 
+\index{Rental\+Manager@{Rental\+Manager}!rent\+Vehicle@{rent\+Vehicle}}
+\index{rent\+Vehicle@{rent\+Vehicle}!Rental\+Manager@{Rental\+Manager}}
+\subsubsection{\texorpdfstring{rent\+Vehicle()}{rentVehicle()}}
+{\footnotesize\ttfamily void Rental\+Manager\+::rent\+Vehicle (\begin{DoxyParamCaption}\item[{\hyperlink{class_vehicle}{Vehicle} $\ast$}]{v,  }\item[{\hyperlink{class_customer}{Customer} $\ast$}]{c }\end{DoxyParamCaption})}
+
+Takes a vehicle and assigns a customer to that vehicle. Also changes the status of the vehicle to rented and moves it to the list of rented vehicles.
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_vehicle}{Vehicle} to be rented \\
+\hline
+{\em c} & \hyperlink{class_customer}{Customer} renting the vehicle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_rental_manager_a17e836a98a2d3b0c9296dd92c9f86d19}\label{class_rental_manager_a17e836a98a2d3b0c9296dd92c9f86d19}} 
+\index{Rental\+Manager@{Rental\+Manager}!repair\+Vehicle@{repair\+Vehicle}}
+\index{repair\+Vehicle@{repair\+Vehicle}!Rental\+Manager@{Rental\+Manager}}
+\subsubsection{\texorpdfstring{repair\+Vehicle()}{repairVehicle()}}
+{\footnotesize\ttfamily void Rental\+Manager\+::repair\+Vehicle (\begin{DoxyParamCaption}\item[{\hyperlink{class_vehicle}{Vehicle}}]{v }\end{DoxyParamCaption})}
+
+Repairs a given vehicle. Moves the vehicle into the detail queue and changes the status to needs detailing.
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_vehicle}{Vehicle} that is being repaired \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_rental_manager_a372dc4e901586e4e40e697df8c990faa}\label{class_rental_manager_a372dc4e901586e4e40e697df8c990faa}} 
+\index{Rental\+Manager@{Rental\+Manager}!return\+Vehicle@{return\+Vehicle}}
+\index{return\+Vehicle@{return\+Vehicle}!Rental\+Manager@{Rental\+Manager}}
+\subsubsection{\texorpdfstring{return\+Vehicle()}{returnVehicle()}}
+{\footnotesize\ttfamily void Rental\+Manager\+::return\+Vehicle (\begin{DoxyParamCaption}\item[{\hyperlink{class_vehicle}{Vehicle}}]{v }\end{DoxyParamCaption})}
+
+Returns a rented vehicle. Changes the status to needs detailing and removes the customer id. Also puts the vehicle in the detail queue.
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_vehicle}{Vehicle} to be returned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_rental_manager_afcb0495ecb6cca4d239a14ded559bb0a}\label{class_rental_manager_afcb0495ecb6cca4d239a14ded559bb0a}} 
+\index{Rental\+Manager@{Rental\+Manager}!return\+Vehicle\+Problems@{return\+Vehicle\+Problems}}
+\index{return\+Vehicle\+Problems@{return\+Vehicle\+Problems}!Rental\+Manager@{Rental\+Manager}}
+\subsubsection{\texorpdfstring{return\+Vehicle\+Problems()}{returnVehicleProblems()}}
+{\footnotesize\ttfamily void Rental\+Manager\+::return\+Vehicle\+Problems (\begin{DoxyParamCaption}\item[{\hyperlink{class_vehicle}{Vehicle}}]{v }\end{DoxyParamCaption})}
+
+Returns a rented vehicle that has problems. Changes the status to need repair and removes the customer id. Also puts the vehicle in the repair queue.
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_vehicle}{Vehicle} to be returned with problems \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_rental_manager_af54e7a73a0419847843bb90b81cf09ff}\label{class_rental_manager_af54e7a73a0419847843bb90b81cf09ff}} 
+\index{Rental\+Manager@{Rental\+Manager}!search\+Name@{search\+Name}}
+\index{search\+Name@{search\+Name}!Rental\+Manager@{Rental\+Manager}}
+\subsubsection{\texorpdfstring{search\+Name()}{searchName()}}
+{\footnotesize\ttfamily void Rental\+Manager\+::search\+Name (\begin{DoxyParamCaption}\item[{string}]{token }\end{DoxyParamCaption})}
+
+Searches the list of rented vehicles looking for all vehicles rented by a particular customer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em token} & String that is being searched for (customer firstname, lastname or id) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{rental_manager_8h}{rental\+Manager.\+h}\item 
+\hyperlink{rental_manager_8cpp}{rental\+Manager.\+cpp}\end{DoxyCompactItemize}

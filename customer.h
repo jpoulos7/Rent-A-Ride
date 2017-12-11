@@ -40,8 +40,8 @@ public:
     int getCustomerID();
 
     string toString();
-
-
+    
+    
 };
 
 #endif

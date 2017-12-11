@@ -2,7 +2,8 @@ CC = g++
 CPPFLAGS = -Wall -std=c++11
 LDFLAGS = -lfltk
 
-main: main.o rentalManager.o car.o truck.o suv.o motorcycle.o vehicle.o customer.o rentalManager.o
+RaRGUI: RaRGUI.o rentalManager.o car.o truck.o suv.o motorcycle.o vehicle.o customer.o rentalManager.o
+	rm *.o
 
 rentalManager.o: rentalManager.h
 
